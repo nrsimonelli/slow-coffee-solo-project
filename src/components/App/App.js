@@ -17,6 +17,11 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 
+import ProfilePage from '../ProfilePage/ProfilePage';
+import FeedbackPage from '../FeedbackPage/FeedbackPage';
+import BrewPage from '../BrewPage/BrewPage';
+import SetupPage from '../SetupPage/SetupPage';
+
 import './App.css';
 
 class App extends Component {
@@ -54,6 +59,26 @@ class App extends Component {
               exact
               path="/info"
               component={InfoPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/setup"
+              component={SetupPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/brew"
+              component={BrewPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/setup"
+              component={FeedbackPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/profile"
+              component={ProfilePage}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
