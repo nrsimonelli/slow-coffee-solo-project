@@ -1,10 +1,9 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
-// worker Saga: will be fired on "FEEDBACK" actions
+// POST will be fired on "FEEDBACK" actions
 function* handleFeedback(action) {
   try {
-    // passes the username and password from the payload to the server
     yield axios.post('/api/feedback/send', action.payload);
 
   } catch (error) {

@@ -21,7 +21,7 @@ router.post('/send', (req, res) => {
     const comment = req.body.comment;
     const user_id = req.body.user;
   
-    const queryString = 'INSERT INTO "feedback" (timing, temp, target, taste, comment, user_id) VALUES ($1, $2, $3, $4, $5, $6)';
+    const queryString = 'INSERT INTO "feedback" (timing, temp, target, taste, comment, user_id) VALUES ($1, $2, $3, $4, $5, $6);';
     pool.query(queryString, [timing, temp, target, taste, comment, user_id])
       .then(() => res.sendStatus(201))
       .catch(() => res.sendStatus(500));
