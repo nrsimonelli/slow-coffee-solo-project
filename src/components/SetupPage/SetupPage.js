@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import LogOutButton from "../LogOutButton/LogOutButton";
+
 
 class SetupPage extends Component {
 
@@ -10,7 +10,7 @@ class SetupPage extends Component {
       <div>
         <h1 id="welcome">Setup, {this.props.user.username}!</h1>
         <p>Your ID is: {this.props.user.id}</p>
-        <LogOutButton className="log-in" />
+        
       </div>
     );
   }

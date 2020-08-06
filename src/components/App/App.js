@@ -72,7 +72,7 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
-              path="/setup"
+              path="/feedback"
               component={FeedbackPage}
             />
             <ProtectedRoute

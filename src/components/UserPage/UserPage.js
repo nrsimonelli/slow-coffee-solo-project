@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LogOutButton from "../LogOutButton/LogOutButton";
+import AboutContent from '../AboutContent/AboutContent';
+import LearnContent from '../LearnContent/LearnContent';
+import BrewContent from '../BrewContent/BrewContent';
 
 class UserPage extends Component {
 
@@ -11,6 +14,9 @@ class UserPage extends Component {
         <h1 id="welcome">Welcome, {this.props.user.username}!</h1>
         <p>Your ID is: {this.props.user.id}</p>
         <LogOutButton className="log-in" />
+        <AboutContent />
+        <LearnContent />
+        <BrewContent />
       </div>
     );
   }
