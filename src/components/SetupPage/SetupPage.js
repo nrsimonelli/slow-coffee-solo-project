@@ -144,6 +144,9 @@ class SetupPage extends Component {
       activeStep: 0,
     });
   };
+  handleGo = () => {
+    this.props.history.push('/brew')
+  }
   // for drop down menu select
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -173,14 +176,22 @@ class SetupPage extends Component {
           })}
         </Stepper>
         <div>
-          {activeStep === steps.length ? (
+          {activeStep === steps.length - 1 ? (
             <div>
               <Typography className={classes.instructions}>
-                All steps completed - you&apos;re finished
+                Press 'Ready' once you have grinded to the target amount
               </Typography>
               <Button onClick={this.handleReset} className={classes.button}>
                 Reset
               </Button>
+              <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={this.handleGo}
+                  className={classes.button}
+                >
+                Ready
+                </Button>
             </div>
           ) : (
             <div>
@@ -200,7 +211,7 @@ class SetupPage extends Component {
                   onClick={this.handleNext}
                   className={classes.button}
                 >
-                  {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                Next
                 </Button>
               </div>
             </div>
@@ -239,7 +250,6 @@ class SetupPage extends Component {
           </Select>
         </FormControl>
         </form>
-          
         ) : (
           activeStep === 1 ? (
             <form className={classes.menuSelect} autoComplete="off">
