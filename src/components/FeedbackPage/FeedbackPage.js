@@ -19,7 +19,7 @@ class FeedbackPage extends Component {
   sendFeedback = (event) => {
     event.preventDefault();
       this.props.dispatch({
-        type: 'FEEDBACK',
+        type: 'ADD_FEEDBACK',
         payload: {
           timing: this.state.timing,
           temp: this.state.temp,

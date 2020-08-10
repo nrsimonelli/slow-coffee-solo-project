@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import LogOutButton from "../LogOutButton/LogOutButton";
 import AboutContent from '../AboutContent/AboutContent';
 import LearnContent from '../LearnContent/LearnContent';
 import BrewContent from '../BrewContent/BrewContent';
 
-class UserPage extends Component {
+class Home extends Component {
 
   // this component doesn't do much to start, just renders some user info to the DOM
   render() {
     return (
       <div>
-        <h1 id="welcome">Welcome, {this.props.user.username}!</h1>
-        <p>Your ID is: {this.props.user.id}</p>
-        <LogOutButton className="log-in" />
+        <h1>Home</h1>
+        
         <AboutContent />
         <LearnContent />
         <BrewContent />
@@ -28,4 +26,4 @@ const mapStateToProps = (state) => ({
 });
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(UserPage);
+export default connect(mapStateToProps)(Home);
