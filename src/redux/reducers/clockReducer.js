@@ -1,10 +1,10 @@
-const coffeeReducer = (state = [], action) => {
+const clockReducer = (state = [], action) => {
   switch (action.type) {
       // FETCH_COFEE
-    case 'SET_COFFEE':
+    case 'SET_TIME':
       return action.payload;
 
-    case 'CLEAR_COFFEE':
+    case 'CLEAR_TIME':
       return [];
 
     default:
@@ -13,4 +13,4 @@ const coffeeReducer = (state = [], action) => {
 };
 
 
-export default coffeeReducer;
+export default clockReducer;

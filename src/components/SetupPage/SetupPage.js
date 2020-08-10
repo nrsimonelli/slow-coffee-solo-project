@@ -71,7 +71,7 @@ class SetupPage extends Component {
     date: '',
     user: this.props.user.id,
     addButton: false,
-    activeStep:0,
+    activeStep: 0,
     targetVolume: '',
     coffeeSelection: '',
     labelWidth: 0,
@@ -144,7 +144,15 @@ class SetupPage extends Component {
       activeStep: 0,
     });
   };
+
   handleGo = () => {
+    this.props.dispatch({
+      type: 'SET_TIME',
+      payload: {
+        volume: this.state.targetVolume,
+        title: this.state.coffeeSelection
+      }
+    });
     this.props.history.push('/brew')
   }
   // for drop down menu select
