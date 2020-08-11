@@ -23,11 +23,11 @@ const styles = theme => ({
     width: '90%',
   },
   button: {
-    marginRight: theme.spacing.unit,
+    marginRight: theme.spacing(1),
   },
   instructions: {
-    marginTop: theme.spacing.unit,
-    marginBottom: theme.spacing.unit,
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
   },
   menuSelect: {
     display: 'flex',
@@ -35,20 +35,23 @@ const styles = theme => ({
     backgroundColor: 'white',
   },
   formControl: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
     minWidth: 120,
   },
   selectEmpty: {
-    marginTop: theme.spacing.unit * 2,
+    marginTop: theme.spacing(2),
   },
   noBackground: {
     backgroundColor: 'red',
     display: 'flex',
   },
+  verticalButtonProfile: {
+    display: 'flex'
+  },
 });
 
 function getSteps() {
-  return ['Select Coffee', 'Volume', 'Target Grind'];
+  return ['Select Coffee', 'Volume', 'Target Grind', 'Advanced Stettings'];
 }
 
 function getStepContent(step) {
@@ -59,6 +62,10 @@ function getStepContent(step) {
       return 'How many cups are you making?';
     case 2:
       return 'Hit ready once you have grinded to the target amount';
+    case 3:
+      return 'Sweetness-Acidity Profile'
+    case 4:
+      return 'Strength Profile'
     default:
       return 'Unknown step';
   }
@@ -74,6 +81,8 @@ class SetupPage extends Component {
     activeStep: 0,
     targetVolume: '',
     coffeeSelection: '',
+    profileOne: 1,
+    profileTwo: 2,
     labelWidth: 0,
   };
   
@@ -150,7 +159,9 @@ class SetupPage extends Component {
       type: 'SET_TIME',
       payload: {
         volume: this.state.targetVolume,
-        title: this.state.coffeeSelection
+        title: this.state.coffeeSelection,
+        profileOne: this.state.profileOne,
+        profileTwo: this.state.profileTwo,
       }
     });
     this.props.history.push('/brew')
@@ -158,6 +169,8 @@ class SetupPage extends Component {
   // for drop down menu select
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+    console.log('this.state', this.state);
+    
   };
 
 
@@ -184,10 +197,10 @@ class SetupPage extends Component {
           })}
         </Stepper>
         <div>
-          {activeStep === steps.length - 1 ? (
+          {activeStep === 2 ? (
             <div>
               <Typography className={classes.instructions}>
-                Press 'Ready' once you have grinded to the target amount
+                Grind on a coarse setting to the perscribed amount
               </Typography>
               <Button onClick={this.handleReset} className={classes.button}>
                 Reset
@@ -198,7 +211,7 @@ class SetupPage extends Component {
                   onClick={this.handleGo}
                   className={classes.button}
                 >
-                Ready
+                Finish
                 </Button>
             </div>
           ) : (
@@ -289,15 +302,13 @@ class SetupPage extends Component {
                 <MenuItem value={3}>3.0</MenuItem>
                 <MenuItem value={3.5}>3.5</MenuItem>
                 <MenuItem value={4}>4.0</MenuItem>
-                <MenuItem value={4.5}>4.5</MenuItem>
-                <MenuItem value={5}>5.0</MenuItem>
               </Select>
             </FormControl>
             </form>
     
           ) : (
             <div className='gramAmount'>
-              {this.state.targetVolume * 16}g
+              {this.state.targetVolume * 15}g
             </div>
           )
           )}
@@ -338,7 +349,42 @@ class SetupPage extends Component {
           ) : (
             false
           )}
-        </div>
+          </div>
+          
+          {activeStep === 3 && (
+          <div className={classes.verticalButtonProfile}>
+            <Button
+             variant="contained"
+             color="primary"
+             value={1}
+             onClick={this.handleInputChangeFor('profileOne')}
+             className={classes.button}
+            >
+            Sweet
+            </Button>
+            <Button
+              
+              variant="contained"
+              color="primary"
+              value={0}
+              onClick={this.handleInputChangeFor('profileOne')}
+              className={classes.button}
+            >
+              Balanced
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              value={2}
+              onClick={this.handleInputChangeFor('profileOne')}
+              className={classes.button}
+            >
+              Acidic
+            </Button>
+          </div>
+          )}
+            
+        
       </div>
     );
   }
