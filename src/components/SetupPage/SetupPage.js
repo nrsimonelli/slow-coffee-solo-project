@@ -81,8 +81,8 @@ class SetupPage extends Component {
     activeStep: 0,
     targetVolume: '',
     coffeeSelection: '',
-    profileOne: 1,
-    profileTwo: 2,
+    profileOne: 0,
+    profileTwo: 0,
     labelWidth: 0,
   };
   
@@ -356,7 +356,7 @@ class SetupPage extends Component {
             <Button
              variant="contained"
              color="primary"
-             value={1}
+             value={.05}
              onClick={this.handleInputChangeFor('profileOne')}
              className={classes.button}
             >
@@ -375,7 +375,7 @@ class SetupPage extends Component {
             <Button
               variant="contained"
               color="primary"
-              value={2}
+              value={-.05}
               onClick={this.handleInputChangeFor('profileOne')}
               className={classes.button}
             >

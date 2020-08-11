@@ -10,7 +10,6 @@ import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
 
 const styles = theme => ({
   clockTitle: {
@@ -29,6 +28,7 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+
   },
   text: {
     color: 'grey',
@@ -43,7 +43,7 @@ const styles = theme => ({
     fontSize: 16,
   },
   root: {
-    width: '100%',
+    width: '90%',
 
   },
   button: {
@@ -56,34 +56,32 @@ const styles = theme => ({
   resetContainer: {
     padding: theme.spacing(3),
   },
+  smallItalic: {
+    marginBottom: 40,
+
+  },
+  smallRegular: {
+    marginBottom: 40,
+  }
+  
 });
 
 const renderTime = ({ remainingTime }) => {
+  if (remainingTime === 0) {
+    return <div className="timer">Enjoy...</div>;
+  }
   return (
     <div className="timer">
       <div className="value">{remainingTime}</div>
     </div>
   );
-};
+}
 
 function getStep() {
-  return ['Bloom', 'First Pour', 'Second Pour', 'Final Pour'];
+  return ['Bloom', 'First Pour', 'Second Pour', 'Third Pour', 'Final Pour'];
 }
 
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return 'Which coffee will you be using?';
-    case 1:
-      return 'How many cups are you making?';
-    case 2:
-      return 'Hit ready once you have grinded to the target amount';
-    case 3:
-      return 'tr';
-    default:
-      return 'Unknown step';
-  }
-}
+
 
 class BrewPage extends Component {
   state = {
@@ -97,6 +95,36 @@ class BrewPage extends Component {
       activeStep: 0,
     });
   }
+  handleFinish = () => {
+    this.props.history.push('/feedback')
+  }
+
+  getStepContent = (step) => {
+    // end volume
+    const v = this.props.clock.volume * 240
+    // constant
+    const n = 0.2
+    // first modifier
+    const x = this.props.clock.profileOne
+    // second modifier
+    const y = this.props.clock.profileTwo
+
+    switch (step) {
+      case 0:
+        return `target = ${v * (n - x)}g`;
+      case 1:
+        return `target = ${v * 2 * n}g`;
+      case 2:
+        return `target = ${v * 3 * n}g`;
+      case 3:
+        return `target = ${v * 4 * n}g`;
+      case 4:
+        return `target = ${v}g`;
+      default:
+        return 'Unknown step';
+    }
+  }
+
 
   setClockStage = () => {
     if(this.state.clockStage === 1){
@@ -111,9 +139,20 @@ class BrewPage extends Component {
       this.nextStep();
       console.log('5 was caught');
     }
+    if(this.state.clockStage === 7){
+      this.nextStep();
+      console.log('7 was caught');
+    }
+    if(this.state.clockStage === 9){
+      this.nextStep();
+      console.log('7 was caught');
+    }
     this.setState({
       clockStage: this.state.clockStage + 1,
     });
+  }
+  isOdd = (num) => {
+    return num % 2
   }
 
   nextStep = () => {
@@ -131,7 +170,7 @@ class BrewPage extends Component {
     return (
       <div>
        <h1>
-        Cups of Coffee = {this.props.clock.volume}
+        Brew Time
         <br />
       </h1>
       <div className={classes.root}>
@@ -140,7 +179,7 @@ class BrewPage extends Component {
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
             <StepContent>
-              <Typography>{getStepContent(index)}</Typography>
+              <Typography>{this.getStepContent(index)}</Typography>
               <div className={classes.actionsContainer}>
                 <div>
                  
@@ -150,27 +189,13 @@ class BrewPage extends Component {
           </Step>
         ))}
       </Stepper>
-      {/* <div>
-          {activeStep === 0 ? (
-            <div>
-              <Typography className={classes.instructions}>
-                
-              </Typography>
-              <Button onClick={this.handleReset} className={classes.button}>
-                Reset
-              </Button>
-            </div>
-          ) : (
-            false
-          )}
-      </div> */}
-      {activeStep === steps.length && (
-        <Paper square elevation={0} className={classes.resetContainer}>
-          <Typography>All steps completed - you&apos;re finished</Typography>
-          <Button onClick={this.BrewPagehandleReset} className={classes.button}>
-            Reset
-          </Button>
-        </Paper>
+    </div>
+    <div className={classes.timerWrapper}>
+      {clockStage  >= 1 && clockStage <= 9 && this.isOdd(clockStage) === 0 && (
+        <div className={classes.smallItalic}>wait...</div>
+      )}
+      {clockStage  >= 1 && this.isOdd(clockStage) === 1 && (
+        <div className={classes.smallRegular}>Pour</div>
       )}
     </div>
       <div className={classes.timerWrapper}>
@@ -181,7 +206,6 @@ class BrewPage extends Component {
         >
           {renderTime}
         </CountdownCircleTimer>
-
         ) : (
           false
         )}
@@ -275,12 +299,12 @@ class BrewPage extends Component {
           {renderTime}
         </CountdownCircleTimer>
         )}
-        {clockStage === 10 && (
+        {clockStage >= 10 && (
           <CountdownCircleTimer
           isPlaying
-          duration={30}
+          duration={5}
           colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
-          onComplete={this.setClockStage}
+          onComplete={[false, 0]}
         >
           {renderTime}
         </CountdownCircleTimer>
@@ -288,16 +312,30 @@ class BrewPage extends Component {
         
         
       </div>
-      {clockStage === 0 ? (
+      {clockStage === 0 && (
         <Button
           onClick={this.setClockStage}
           className={classes.button}
           variant="contained"
           color="primary"
         >Go</Button>
-      ) : (
-        false
       )}
+      {clockStage >=1 && (
+        <>
+        <Button
+          onClick={this.handleReset}  
+          className={classes.button}
+        >Reset</Button>
+        <Button
+          disabled={clockStage <= 9} 
+          onClick={this.handleFinish}
+          className={classes.button}
+          variant="contained"
+          color="primary"
+        >Finish</Button>
+        </>
+      )}
+
       
       </div>
     );
