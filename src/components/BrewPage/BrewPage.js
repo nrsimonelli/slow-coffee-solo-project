@@ -13,15 +13,14 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   clockTitle: {
-    fontFamily: 'Roboto',
+    fontFamily: 'lato',
     textAlign: 'center',
     marginBottom: 40,
   },
   timerWrapper: {
     display: 'flex',
     justifyContent: 'center',
-    fontSize: 40,
-    
+    fontSize: 40, 
   },
   timer: {
     fontFamily: 'Montserrat',
@@ -49,6 +48,11 @@ const styles = theme => ({
   button: {
     marginTop: theme.spacing(1),
     marginRight: theme.spacing(1),
+  },
+  buttonBlue: {
+    marginTop: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    backgroundColor: '#07C8F9',
   },
   actionsContainer: {
     marginBottom: theme.spacing(2),
@@ -168,12 +172,14 @@ class BrewPage extends Component {
     const { clockStage } = this.state;
 
     return (
-      <div>
+      <div className='myTheme'>
+       <center>
        <h1>
         Brew Time
-        <br />
-      </h1>
-      <div className={classes.root}>
+       </h1>
+       </center>
+      <div className='contentRootHorizontal'>
+        <div calssName='contentThird'>
       <Stepper activeStep={activeStep} orientation="vertical">
         {steps.map((label, index) => (
           <Step key={label}>
@@ -189,7 +195,11 @@ class BrewPage extends Component {
           </Step>
         ))}
       </Stepper>
-    </div>
+      </div>
+
+
+    
+    <div className='contentThird'>
     <div className={classes.timerWrapper}>
       {clockStage  >= 1 && clockStage <= 9 && this.isOdd(clockStage) === 0 && (
         <div className={classes.smallItalic}>wait...</div>
@@ -315,9 +325,9 @@ class BrewPage extends Component {
       {clockStage === 0 && (
         <Button
           onClick={this.setClockStage}
-          className={classes.button}
+          className={classes.buttonBlue}
           variant="contained"
-          color="primary"
+          
         >Go</Button>
       )}
       {clockStage >=1 && (
@@ -336,7 +346,8 @@ class BrewPage extends Component {
         </>
       )}
 
-      
+      </div>
+      </div>
       </div>
     );
   }

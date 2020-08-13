@@ -13,6 +13,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Nav from '../Nav/Nav';
+import Footer from '../Footer/Footer';
 
 function TabContainer(props) {
   return (
@@ -114,7 +116,8 @@ class ProfilePage extends Component {
     const feedbackRows = this.props.feedback;
 
     return (
-      <div>
+      <div className='myTheme'>
+        <Nav />
         <h1 id="welcome">Profile, {this.props.user.username}!</h1>
         
         <div className={classes.root}>
@@ -190,7 +193,7 @@ class ProfilePage extends Component {
         </div>
         
 
-        
+        <Footer />
       </div>
     );
   }

@@ -36,6 +36,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "lato-font": "^3.0.0",
     "nodemon": "^1.18.10"
   },
   "browserslist": [

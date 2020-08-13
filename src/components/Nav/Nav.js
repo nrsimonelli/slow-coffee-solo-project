@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import './Nav.css';
 import LogOutButton from '../LogOutButton/LogOutButton';
 
 const Nav = (props) => (
   <div className="nav">
     <Link to="/home">
-      <h2 className="nav-title">Slow Coffee Solo Project</h2>
+      <span className="nav-title">Slow</span><span className='nav-title-two'>Coffee</span>
     </Link>
     <div className="nav-right">
       {props.user.id ? 

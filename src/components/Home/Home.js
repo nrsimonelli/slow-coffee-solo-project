@@ -3,18 +3,25 @@ import { connect } from 'react-redux';
 import AboutContent from '../AboutContent/AboutContent';
 import LearnContent from '../LearnContent/LearnContent';
 import BrewContent from '../BrewContent/BrewContent';
+import Nav from '../Nav/Nav';
+import Footer from '../Footer/Footer';
 
 class Home extends Component {
 
   // this component doesn't do much to start, just renders some user info to the DOM
   render() {
     return (
-      <div>
-        <h1>Home</h1>
+      <div className='myTheme'>
+        <Nav />
+        
+        <div className='contentRootHome'>
+          <p className='contentHomeText'>Yes.</p>
+          </div>
         
         <AboutContent />
         <LearnContent />
         <BrewContent />
+        <Footer />
       </div>
     );
   }

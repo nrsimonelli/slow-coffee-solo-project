@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Nav from '../Nav/Nav';
+import Footer from '../Footer/Footer';
 
 class FeedbackPage extends Component {
   
@@ -41,7 +43,8 @@ class FeedbackPage extends Component {
 
   render() {
     return (
-      <div>
+      <div className='myTheme'>
+        <Nav />
         <form onSubmit={this.sendFeedback}>
           <h1>Feedback</h1>
           <div>
@@ -90,6 +93,7 @@ class FeedbackPage extends Component {
               <textarea onChange={this.handleInputChangeFor('comment')} type='textarea' name='comment' value={this.state.comment}/>
             </label>
           </div>
+          
           <div>
             <input
               className="submit"
@@ -99,6 +103,7 @@ class FeedbackPage extends Component {
             />
           </div>
         </form>
+        <Footer />
       </div>
     );
   }

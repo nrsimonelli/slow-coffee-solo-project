@@ -1,15 +1,32 @@
+.myTheme {
+    --primary: #7A4F38;
+    --secondary: #3A2E2E;
+    --background: #2B2222;
+    --lightest: #F6F2E6;
+    --highlight: #CEA36C;
+    --lowlight: #D8A858;
+    --stunner: #07C8F9;
+    --text: rgba(255,255,255,.87); 
+
+    background-color: var(--lightest);
+    color: #121212;
+
+    font-family:  'Lato', 'Roboto', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:  'Lato', 'Roboto', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
     margin: 0px;
+
 }
 
 .alert {
-    background-color: #ff4545;
+    background-color: var(--highlight);
     margin: 50px;
 }
 
 form {
-    background-color: #dbd5d5;
+    background-color: var(--lowlight);
     width: 30%;
     height: 250px;
     margin: 20px auto;
@@ -23,9 +40,9 @@ input {
 }
 
 .log-in, .log-out, .register {
-  background-color: #00acb0;
   border-radius: 4px;
-  color: #f8f8f8;
+  background-color: var(--primary);
+  color: inherit;
   min-height: 50px;
   min-width: 100px;
   outline:0;
@@ -33,7 +50,7 @@ input {
 }
 
 .log-in:hover, .log-out:hover, .register:hover {
-  background-color: #008183;
+  background-color: var(--secondary);
 }
 
 /* This line makes the "Register" and "Login" buttons look like links */
@@ -44,6 +61,314 @@ input {
     padding:0;
     font: inherit;
     outline:0;
-    border-bottom:1px solid #444; 
     cursor: pointer;
 }
+.contentRootVertical{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: left;
+    width: 100vw;
+    height: 100vh;
+    border: 2px solid;
+    overflow: scroll;
+}
+.contentRootVerticalSetup{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: var(--text);
+    color: black;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: left;
+    width: 100vw;
+    height: 100vh;
+    border: 2px solid;
+    overflow: scroll;
+}
+.contentRootHorizontal{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    border: 2px solid;
+    overflow: scroll;
+}
+.contentRootAbout{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: space-around;
+  width: 100vw;
+  height: 100vh;
+  border: 2px solid;
+  overflow: scroll;
+}
+.contentRootHome{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url('/images/esspressoBirdsEye.jpg');
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    border: 2px solid;
+    overflow: scroll;
+}
+.contentHomeText{
+    color: var(--text);
+    font-size: 64px;
+    letter-spacing: .1em;
+    font-weight: 200;
+    /* font-style: italic; */
+}
+.contentRootLearn{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: space-around;
+  width: 100vw;
+  height: 100vh;
+  border: 2px solid;
+  overflow: scroll;
+  background-color: var(--lightest);
+  
+}
+.contentRootBrew{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: left;
+    background-image: url('https://ak.picdn.net/shutterstock/videos/291442/thumb/1.jpg');
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    border: 2px solid;
+    overflow: scroll;
+  }
+.contentThird{
+    border: 1px solid pink;
+    margin: .5em;
+    padding: .5em;
+
+    color: white;
+}
+.contentLearnOne{
+    flex-basis: 90%;
+    border: 1px solid black;
+    margin: .5em;
+    padding: .5em;
+    color: black;
+    text-align: center;
+    order:1;
+    font-size: 60px;
+    font-weight: 300;
+}
+.contentLearnTwo{
+    flex-basis: 25%;
+    height: 55vh;
+    border: 1px solid black;
+    margin: .5em;
+    padding: .5em;
+    color: var(--text);
+    order:2;
+    background-image: url('https://images.unsplash.com/photo-1494253109108-2e30c049369b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80');
+    background-size: cover;
+}
+.contentLearnTwoText{
+    font-size: 20px;
+    font-weight: 300;
+    display: none;
+}
+.contentLearnThreeText{
+    font-size: 20px;
+    font-weight: 300;
+}
+.contentLearnFourText{
+    font-size: 20px;
+    font-weight: 300;
+    border: 2px solid black;
+    margin-top: 15vh;
+}
+.contentLearnTwo:hover .contentLearnTwoText{
+    display: block;
+}
+.contentLearnTwo:hover {
+    opacity: .5;
+}
+.contentLearnThree{
+    flex-basis: 25%;
+    height: 55vh;
+    border: 1px solid black;
+    margin: .5em;
+    padding: .5em;
+    color: var(--text);
+    order:3;
+    background-image: url('https://images.unsplash.com/photo-1494253109108-2e30c049369b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80');
+    background-size: cover;
+}
+.contentRootLearn .title{
+    font-size: 60px;
+}
+.contentLearnFour{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 25%;
+    height: 55vh;
+    border: 1px solid black;
+    margin: .5em;
+    padding: .5em;
+    color: var(--text);
+    order:4;
+    background-image: url('https://images.unsplash.com/photo-1494253109108-2e30c049369b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80');
+    background-size: cover;
+}
+.contentAboutOne{
+    border: 1px solid black;
+    margin: .5em;
+    padding: .5em;
+    flex-basis: 40%;
+    height: 40vh;
+    order:1;
+    background-image: url('https://images.unsplash.com/photo-1494253109108-2e30c049369b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80');
+    background-size: cover;
+}
+.contentAboutTwo{
+    border: 1px solid black;
+    margin: .5em;
+    padding: .5em;
+    flex-basis: 40%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-content: center;
+    justify-content: center;
+    height: 40vh;
+    order:2;
+    color: var(--text);
+    background-color: var(--secondary);
+}
+.contentAboutTwoTitle{
+    font-weight: 200;
+    font-size: 40px;
+    padding: 0px 40px 0px 40px;
+    
+}
+.contentAboutTwoText{
+    font-weight: 100;
+    font-size: 24px;
+    padding: 0px 40px 0px 40px;
+    
+}
+.contentAboutThree{
+    border: 1px solid black;
+    margin: .5em;
+    padding: .5em;
+    flex-basis: 40%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-content: center;
+    justify-content: center;
+    height: 40vh;
+    color: var(--text);
+    order:3;
+    background-color: var(--secondary);
+}
+.contentAboutThreeTitle{
+    font-weight: 200;
+    font-size: 40px;
+    padding: 0px 80px 0px 80px;   
+}
+.contentAboutThreeText{
+    font-weight: 100;
+    font-size: 24px;
+    padding: 0px 80px 0px 80px;
+}
+.contentAboutFour{
+    border: 1px solid black;
+    margin: .5em;
+    padding: .5em;
+    color: white;
+    flex-basis: 40%;
+    height: 40vh;
+    order: 4;
+    background-image: url('https://images.unsplash.com/photo-1494253109108-2e30c049369b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80');
+    background-size: cover;
+}
+.contentBrew{
+    border: 1px solid pink;
+    margin: .5em;
+    padding: .5em;
+    color: white;
+}
+.nav-title {
+    font-size: 80px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    display: inline-block;
+    color: var(--text);
+    padding-left: .2em;
+}
+.nav-title-two {
+    font-size: 80px;
+    font-weight: 200;
+    display: inline-block;
+    font-style: italic;
+    letter-spacing: .2em;
+    padding-left: .4em;
+    color: var(--text);
+    
+}
+
+.nav {
+  overflow: hidden;
+  background-color: var(--primary);
+}
+
+.nav-link {
+  float: left;
+  color: var(--text);
+  text-align: center;
+  padding: 24px 10px;
+  text-decoration: none;
+  font-size: 15px;
+  background-color: var(--primary);
+  border:none;
+  cursor: pointer;
+  outline:0;
+}
+
+.nav-link:hover {
+  opacity: .5;
+}
+
+.nav-right {
+  float: right;
+}
+
+footer {
+    margin-top: 80px;
+}
+
+

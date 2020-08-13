@@ -1,11 +1,12 @@
 const express = require('express');
 const pool = require('../modules/pool');
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 const router = express.Router();
 
 /**
  * GET route template
  */
-router.get('/:id', (req, res) => {
+router.get('/:id', rejectUnauthenticated, (req, res) => {
     const user_id = req.params.id;
 
     const queryString = 'SELECT id, name, roast_date FROM "coffee" WHERE coffee.user_id = $1;';
@@ -19,7 +20,7 @@ router.get('/:id', (req, res) => {
 
 });
 
-router.delete('/delete/:id', (req, res) => {
+router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
   console.log('in coffee router delete!', req.params.id);
   const coffee_id = req.params.id;
 
@@ -34,11 +35,7 @@ router.delete('/delete/:id', (req, res) => {
 });
 
 
-
-/**
- * POST route template
- */
-router.post('/add', (req, res) => {  
+router.post('/add', rejectUnauthenticated, (req, res) => {  
     console.log(req.body);
     const name = req.body.name;
     const date = req.body.date;

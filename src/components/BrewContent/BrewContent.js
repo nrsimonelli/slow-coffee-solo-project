@@ -2,8 +2,18 @@ import React from 'react';
 
 
 const BrewContent = () => (
-  <div>
-    <p>Brew...</p>
+  <div className='contentRootBrew'>
+    
+    <div className='contentThird'>
+      Text to go here
+    </div>
+    <div className='contentThird'>
+      and here
+    </div>
+    <div className='contentThird'>
+      and here too
+    </div>
+    
   </div>
 );
 

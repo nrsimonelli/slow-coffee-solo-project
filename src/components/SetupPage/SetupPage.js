@@ -19,8 +19,11 @@ import Select from '@material-ui/core/Select';
 
 // for stepper theme
 const styles = theme => ({
-  root: {
-    width: '90%',
+  root1: {
+    width: 300 + theme.spacing(3) * 2,
+  },
+  margin: {
+    height: theme.spacing(3),
   },
   button: {
     marginRight: theme.spacing(1),
@@ -51,8 +54,10 @@ const styles = theme => ({
 });
 
 function getSteps() {
-  return ['Select Coffee', 'Volume', 'Target Grind', 'Advanced Stettings'];
+  return ['Select Coffee', 'Volume', 'Target Grind', 'Advanced Settings'];
 }
+
+
 
 function getStepContent(step) {
   switch (step) {
@@ -179,9 +184,10 @@ class SetupPage extends Component {
     const steps = getSteps();
     const { activeStep } = this.state;
     const coffeeCollection = this.props.coffee;
+  
 
     return (
-      <div className={classes.root}>
+      <div className='contentRootVerticalSetup'>
         <div>
         <h1>setup</h1>
         <Stepper activeStep={activeStep}>
@@ -196,12 +202,16 @@ class SetupPage extends Component {
             );
           })}
         </Stepper>
+        <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
         <div>
-          {activeStep === 2 ? (
+          {activeStep === 2 && (
             <div>
               <Typography className={classes.instructions}>
-                Grind on a coarse setting to the perscribed amount
+                Grind coffee to {this.state.targetVolume * 15}g, bring water to a boil, and proceed to finish
               </Typography>
+              <div>
+
+              </div>
               <Button onClick={this.handleReset} className={classes.button}>
                 Reset
               </Button>
@@ -213,34 +223,19 @@ class SetupPage extends Component {
                 >
                 Finish
                 </Button>
-            </div>
-          ) : (
-            <div>
-              <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
-              <div>
-                <Button
-                  disabled={activeStep === 0}
-                  onClick={this.handleBack}
-                  className={classes.button}
-                >
-                  Back
-                </Button>
                 <Button
                   variant="contained"
-                  color="primary"
-                  disabled={(activeStep === 0 && this.state.coffeeSelection === '') || (activeStep === 1 && this.state.targetVolume === '')}
                   onClick={this.handleNext}
                   className={classes.button}
                 >
-                Next
+                Advanced
                 </Button>
-              </div>
             </div>
           )}
           </div>
         </div>
         <div>
-          {activeStep === 0 ? (
+          {activeStep === 0 && (
             <form className={classes.menuSelect} autoComplete="off">
               <FormControl variant="outlined" className={classes.formControl}>
                 <InputLabel
@@ -270,9 +265,40 @@ class SetupPage extends Component {
             ))}
           </Select>
         </FormControl>
+        <div>
+        {activeStep === 0 && this.state.addButton && (
+          <div>
+            <Input 
+            onChange={this.handleInputChangeFor('name')} 
+            type='text' 
+            name='name' 
+            value={this.state.name}/>
+            <Input
+              onChange={this.handleInputChangeFor('date')} 
+              type='date' 
+              name='date' 
+              value={this.state.date}/>
+            <Button
+              onClick={this.addThisCoffee}>
+                Add
+            </Button>
+            <Button
+              onClick={()=>this.changeAddButton(false)}>
+                x
+              </Button>
+          </div>
+         )}
+        {activeStep === 0 && this.state.addButton === false && (
+            <Button
+            className={classes.button}
+            onClick={()=>this.changeAddButton(true)}>
+            New Coffee? Click to add to your collection
+          </Button>
+          )}
+          </div>
         </form>
-        ) : (
-          activeStep === 1 ? (
+        )}
+        {activeStep === 1 && (
             <form className={classes.menuSelect} autoComplete="off">
             <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel
@@ -295,69 +321,55 @@ class SetupPage extends Component {
                 }
               >
                 <MenuItem value=''><em>-</em></MenuItem>
-                <MenuItem value={1}>1.0</MenuItem>
+                <MenuItem value={1.0}>1.0</MenuItem>
+                <MenuItem value={1.1}>1.1</MenuItem>
+                <MenuItem value={1.2}>1.2</MenuItem>
+                <MenuItem value={1.3}>1.3</MenuItem>
+                <MenuItem value={1.4}>1.4</MenuItem>
                 <MenuItem value={1.5}>1.5</MenuItem>
-                <MenuItem value={2}>2.0</MenuItem>
+                <MenuItem value={1.6}>1.6</MenuItem>
+                <MenuItem value={1.7}>1.7</MenuItem>
+                <MenuItem value={1.8}>1.8</MenuItem>
+                <MenuItem value={1.9}>1.9</MenuItem>
+                <MenuItem value={2.0}>2.0</MenuItem>
+                <MenuItem value={2.1}>2.1</MenuItem>
+                <MenuItem value={2.2}>2.2</MenuItem>
+                <MenuItem value={2.3}>2.3</MenuItem>
+                <MenuItem value={2.4}>2.4</MenuItem>
                 <MenuItem value={2.5}>2.5</MenuItem>
-                <MenuItem value={3}>3.0</MenuItem>
+                <MenuItem value={2.6}>2.6</MenuItem>
+                <MenuItem value={2.7}>2.7</MenuItem>
+                <MenuItem value={2.8}>2.8</MenuItem>
+                <MenuItem value={2.9}>2.9</MenuItem>
+                <MenuItem value={3.0}>3.0</MenuItem>
+                <MenuItem value={3.1}>3.1</MenuItem>
+                <MenuItem value={3.2}>3.2</MenuItem>
+                <MenuItem value={3.3}>3.3</MenuItem>
+                <MenuItem value={3.4}>3.4</MenuItem>
                 <MenuItem value={3.5}>3.5</MenuItem>
-                <MenuItem value={4}>4.0</MenuItem>
+                <MenuItem value={3.6}>3.6</MenuItem>
+                <MenuItem value={3.7}>3.7</MenuItem>
+                <MenuItem value={3.8}>3.8</MenuItem>
+                <MenuItem value={3.9}>3.9</MenuItem>
+                <MenuItem value={4.0}>4.0</MenuItem>
               </Select>
             </FormControl>
+            {this.state.targetVolume >= 0.1 && (<h3>Coffee Needed: {this.state.targetVolume * 15}g</h3>)}
             </form>
-    
-          ) : (
-            <div className='gramAmount'>
-              {this.state.targetVolume * 15}g
-            </div>
-          )
           )}
         </div>
-        <div>
-        {activeStep === 0 && this.state.addButton ? (
-          <div>
-            <input 
-            onChange={this.handleInputChangeFor('name')} 
-            type='text' 
-            name='name' 
-            value={this.state.name}/>
-            <input
-              onChange={this.handleInputChangeFor('date')} 
-              type='date' 
-              name='date' 
-              value={this.state.date}/>
-            <button
-              onClick={this.addThisCoffee}>
-                Add
-            </button>
-            <button
-              onClick={()=>this.changeAddButton(false)}>
-                x
-              </button>
-          </div>
-         ) : (
-          false
-          )}
-        </div>
-        <div>
-          {activeStep === 0 && this.state.addButton === false ? (
-            <button
-            className={classes.button}
-            onClick={()=>this.changeAddButton(true)}>
-            New Coffee? Click to add to your collection
-          </button>
-          ) : (
-            false
-          )}
-          </div>
+        
+       
           
           {activeStep === 3 && (
+            
+          <div>
           <div className={classes.verticalButtonProfile}>
             <Button
              variant="contained"
              color="primary"
              value={.05}
-             onClick={this.handleInputChangeFor('profileOne')}
+             onClick={()=> {this.handleInputChangeFor('profileOne'); this.handleNext();}}
              className={classes.button}
             >
             Sweet
@@ -367,7 +379,7 @@ class SetupPage extends Component {
               variant="contained"
               color="primary"
               value={0}
-              onClick={this.handleInputChangeFor('profileOne')}
+              onClick={()=> {this.handleInputChangeFor('profileOne'); this.handleNext()}}
               className={classes.button}
             >
               Balanced
@@ -376,11 +388,66 @@ class SetupPage extends Component {
               variant="contained"
               color="primary"
               value={-.05}
-              onClick={this.handleInputChangeFor('profileOne')}
+              onClick={()=> {this.handleInputChangeFor('profileOne'); this.handleNext()}}
               className={classes.button}
             >
               Acidic
             </Button>
+          </div>
+          </div>
+          )}
+          {activeStep === 4 && (
+          <div className={classes.verticalButtonProfile}>
+            <Button
+             variant="contained"
+             
+             value={.05}
+             onClick={()=> {this.handleInputChangeFor('profileTwo'); this.handleGo()}}
+             className={classes.button}
+            >
+            Low
+            </Button>
+            <Button
+              
+              variant="contained"
+              
+              value={0}
+              onClick={()=> {this.handleInputChangeFor('profileTwo'); this.handleGo()}}
+              className={classes.button}
+            >
+              Balanced
+            </Button>
+            <Button
+              variant="contained"
+              
+              value={-.05}
+              onClick={()=> {this.handleInputChangeFor('profileTwo'); this.handleGo()}}
+              className={classes.button}
+            >
+              High
+            </Button>
+          </div>
+          )}
+          {activeStep <= 1 && (
+            <div>
+            
+              <Button
+                disabled={activeStep === 0}
+                onClick={this.handleBack}
+                className={classes.button}
+              >
+                Back
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                disabled={(activeStep === 0 && this.state.coffeeSelection === '') || (activeStep === 1 && this.state.targetVolume === '')}
+                onClick={this.handleNext}
+                className={classes.button}
+              >
+              Next
+              </Button>
+            
           </div>
           )}
             
