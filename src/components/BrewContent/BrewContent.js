@@ -1,21 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
+import { withRouter } from 'react-router-dom';
 
 
-const BrewContent = () => (
-  <div className='contentRootBrew'>
-    
-    <div className='contentThird'>
-      Text to go here
-    </div>
-    <div className='contentThird'>
-      and here
-    </div>
-    <div className='contentThird'>
-      and here too
-    </div>
-    
-  </div>
-);
+class BrewContent extends Component{
+
+  render(){
+    return(
+      <div className='contentRootBrew'>
+        <div className='contentBrewImageContainer'>
+          <div className='contentBrewImage'>
+            <div className='contentBrewText'>
+              <p>Title text will go here</p>
+            </div>
+          </div>
+          <Button
+            variant='contained'
+            onClick={()=>this.props.history.push('/setup')}
+          >Start</Button>
+        </div>
+      </div>
 
 
-export default BrewContent;
+   ); // end return
+  } // end render
+} // end class
+
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
+// this allows us to use <App /> in index.js
+export default withRouter(connect(mapStateToProps)(BrewContent));

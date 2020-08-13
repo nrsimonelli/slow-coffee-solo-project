@@ -165,7 +165,22 @@ input {
     height: 100vh;
     border: 2px solid;
     overflow: scroll;
-  }
+}
+.contentBrewImageContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,.5);
+}
+.contentBrewText{
+    font-size: 60px;
+    font-weight: 300;
+    color: var(--text);
+
+}
 .contentThird{
     border: 1px solid pink;
     margin: .5em;
@@ -235,14 +250,12 @@ input {
     font-weight: 300;
     display: none;
 }
-
 .contentLearnTwo:hover .contentLearnTwoText, .contentLearnThree:hover .contentLearnThreeText, .contentLearnFour:hover .contentLearnFourText{
     display: block;
 }
 .contentLearnTwo:hover, .contentLearnThree:hover, .contentLearnFour:hover {
     opacity: .9;
 }
-
 .contentRootLearn .title{
     font-size: 60px;
 }
@@ -275,8 +288,7 @@ input {
 .contentAboutTwoTitle{
     font-weight: 200;
     font-size: 40px;
-    padding: 0px 40px 0px 40px;
-    
+    padding: 0px 40px 0px 40px;  
 }
 .contentAboutTwoText{
     font-weight: 100;
@@ -342,7 +354,6 @@ input {
     letter-spacing: .2em;
     padding-left: .4em;
     color: var(--text);
-    
 }
 
 .nav {
@@ -369,6 +380,7 @@ input {
 
 .nav-right {
   float: right;
+  margin-top: 2vh;
 }
 
 footer {

@@ -105,9 +105,9 @@ class FeedbackPage extends Component {
         </form>
         <Footer />
       </div>
-    );
-  }
-}
+    ); // end render
+  } // end return
+} // end class
 
 // Instead of taking everything from state, we just want the user info.
 const mapStateToProps = (state) => ({
