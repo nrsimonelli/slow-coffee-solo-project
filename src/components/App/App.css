@@ -178,7 +178,8 @@ input {
     border: 1px solid black;
     margin: .5em;
     padding: .5em;
-    color: black;
+    color: var(--text);
+    background-color: var(--secondary);
     text-align: center;
     order:1;
     font-size: 60px;
@@ -186,6 +187,8 @@ input {
 }
 .contentLearnTwo{
     flex-basis: 25%;
+    display: flex;
+    flex-direction: column;
     height: 55vh;
     border: 1px solid black;
     margin: .5em;
@@ -194,30 +197,13 @@ input {
     order:2;
     background-image: url('https://images.unsplash.com/photo-1494253109108-2e30c049369b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80');
     background-size: cover;
-}
-.contentLearnTwoText{
-    font-size: 20px;
-    font-weight: 300;
-    display: none;
-}
-.contentLearnThreeText{
-    font-size: 20px;
-    font-weight: 300;
-}
-.contentLearnFourText{
-    font-size: 20px;
-    font-weight: 300;
-    border: 2px solid black;
-    margin-top: 15vh;
-}
-.contentLearnTwo:hover .contentLearnTwoText{
-    display: block;
-}
-.contentLearnTwo:hover {
-    opacity: .5;
+    justify-content: space-between;
+    align-items: left;
 }
 .contentLearnThree{
     flex-basis: 25%;
+    display: flex;
+    flex-direction: column;
     height: 55vh;
     border: 1px solid black;
     margin: .5em;
@@ -226,9 +212,8 @@ input {
     order:3;
     background-image: url('https://images.unsplash.com/photo-1494253109108-2e30c049369b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80');
     background-size: cover;
-}
-.contentRootLearn .title{
-    font-size: 60px;
+    justify-content: space-between;
+    align-items: left;
 }
 .contentLearnFour{
     display: flex;
@@ -242,7 +227,26 @@ input {
     order:4;
     background-image: url('https://images.unsplash.com/photo-1494253109108-2e30c049369b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80');
     background-size: cover;
+    justify-content: space-between;
+    align-items: left;
 }
+.contentLearnTwoText, .contentLearnThreeText, .contentLearnFourText{
+    font-size: 18px;
+    font-weight: 300;
+    display: none;
+}
+
+.contentLearnTwo:hover .contentLearnTwoText, .contentLearnThree:hover .contentLearnThreeText, .contentLearnFour:hover .contentLearnFourText{
+    display: block;
+}
+.contentLearnTwo:hover, .contentLearnThree:hover, .contentLearnFour:hover {
+    opacity: .9;
+}
+
+.contentRootLearn .title{
+    font-size: 60px;
+}
+
 .contentAboutOne{
     border: 1px solid black;
     margin: .5em;
