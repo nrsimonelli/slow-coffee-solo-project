@@ -15,6 +15,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
+import Button from '@material-ui/core/Button';
+
 
 function TabContainer(props) {
   return (
@@ -45,6 +47,9 @@ class ProfilePage extends Component {
   state={
     user: this.props.user.id,
     value: 0,
+    name: '',
+    date: '',
+    editMode: false,
   }
 
   componentDidMount() {
@@ -63,6 +68,18 @@ class ProfilePage extends Component {
       this.getCoffee();
     }
     
+  }
+  handleDateChange = (event) => {
+    this.setState({
+      date: event.target.value
+    })
+    console.log('date is:', event.target.value)
+  }
+  handleNameChange = (event) => {
+    this.setState({
+      name: event.target.value
+    })
+    console.log('name is:', event.target.value);
   }
 
   handleTabChange = (event, value) => {
@@ -86,6 +103,15 @@ class ProfilePage extends Component {
       }
     })
   }
+  toggleEdit = (id) => {
+    this.setState({
+      editMode: id,
+      name: '',
+      date: ''
+    })
+    console.log('editMode:', this.state.editMode);
+    
+  }
 
   deleteFeedback = (id) => {
     console.log('you clicked delete!', id)
@@ -100,9 +126,30 @@ class ProfilePage extends Component {
 
   deleteCoffee = (id) => {
     console.log('you delete coffee', id)
+    this.setState({
+      editMode: false
+    })
     this.props.dispatch({
       type: 'REMOVE_COFFEE',
       payload: id
+    })
+    this.props.dispatch({
+      type: 'CLEAR_COFFEE'
+    })
+  }
+
+  updateCoffee = (id) => {
+    console.log('you updated this row in coffee', id);
+    this.setState({
+      editMode: false
+    })
+    this.props.dispatch({
+      type: 'UPDATE_COFFEE',
+      payload: {
+        name: this.state.name,
+        date: this.state.date,
+        id: id
+      }
     })
     this.props.dispatch({
       type: 'CLEAR_COFFEE'
@@ -142,11 +189,71 @@ class ProfilePage extends Component {
                                 <TableBody>
                                   {coffeeRows.map(row => (
                                     <TableRow key={row.id}>
-                                      <TableCell component='th' scope='row'>{row.name}</TableCell>
-                                      <TableCell align='right'>{row.roast_date}</TableCell>
+                                      <TableCell component='th' scope='row'>
+                                        {this.state.editMode === row.id ? (
+                                          <input 
+                                          type='text' 
+                                          value={this.state.name} 
+                                          placeholder={row.name}
+                                          onChange={this.handleNameChange}>
+                                            
+                                          </input>
+                                        ) : (
+                                          <>
+                                          {row.name}
+                                          </>
+                                        )}
+                                        
+                                      </TableCell>
                                       <TableCell align='right'>
-                                        <button className='deleteButton' onClick={()=>this.updateCoffee(row.id)}>/</button>
-                                        <button className='deleteButton' onClick={()=>this.deleteCoffee(row.id)}>x</button></TableCell>
+                                        {this.state.editMode === row.id ? (
+                                          <input 
+                                          type='date' 
+                                          value={this.state.date} 
+                                          onChange={this.handleDateChange}>
+                                            
+                                          </input>
+                                        ) : (
+                                          <>
+                                          {row.roast_date}
+                                          </>
+                                        )}
+                                      </TableCell>
+                                      <TableCell align='right'>
+                                        {/* <button className='updateButton' onClick={()=>this.updateCoffee(row.id)}>/</button> */}
+                                        {this.state.editMode === row.id ? (
+                                          <>
+                                          <Button
+                                            className='button'
+                                            variant='contained'
+                                            color='primary'
+                                            onClick={()=>this.updateCoffee(row.id)}>
+                                            save
+                                          </Button>
+                                          <Button 
+                                            className='deleteButton'
+                                            color='secondary'
+                                            variant='contained'
+                                            onClick={()=>this.deleteCoffee(row.id)}>
+                                              trash
+                                          </Button>
+                                          <Button 
+                                            className='button' 
+                                            variant='contained'
+                                            onClick={()=>this.toggleEdit(false)}>
+                                              cancel
+                                          </Button>
+                                          </>
+                                        ) : (
+                                          <Button 
+                                            className='button'
+                                            variant='contained'
+                                            color='primary'
+                                            onClick={()=>this.toggleEdit(row.id)}>
+                                              edit
+                                          </Button>
+                                        )}
+                                        </TableCell>
                                     </TableRow>
                                   ))}
                                 </TableBody>

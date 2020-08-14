@@ -36,10 +36,20 @@ function* addCoffee(action) {
     
 }
 
+function* updateCoffee(action) {
+  try{
+      console.log('in update coffee saga', action.payload);
+      yield axios.put('api/coffee/update', action.payload);
+  } catch (error) {
+      console.log('error with update coffee', error);
+  }
+}
+
 function* coffeeSaga() {
   yield takeLatest('FETCH_COFFEE', fetchCoffee);
   yield takeLatest('REMOVE_COFFEE', removeCoffee);
   yield takeLatest('ADD_COFFEE', addCoffee);
+  yield takeLatest('UPDATE_COFFEE', updateCoffee);
 }
 
 export default coffeeSaga;
