@@ -159,7 +159,7 @@ input {
     flex-direction: column;
     justify-content: space-around;
     align-items: left;
-    background-image: url('https://ak.picdn.net/shutterstock/videos/291442/thumb/1.jpg');
+    background-image: url('/images/chemex.jpg');
     background-size: cover;
     width: 100vw;
     height: 100vh;
@@ -173,7 +173,7 @@ input {
     justify-content: space-evenly;
     height: 100%;
     width: 100%;
-    background-color: rgba(0,0,0,.5);
+    background-color: rgba(0,0,0,.2);
 }
 .contentBrewText{
     font-size: 60px;
@@ -210,7 +210,7 @@ input {
     padding: .5em;
     color: var(--text);
     order:2;
-    background-image: url('https://images.unsplash.com/photo-1494253109108-2e30c049369b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80');
+    background-image: url('/images/grind-aesthetic.jpg');
     background-size: cover;
     justify-content: space-between;
     align-items: left;
@@ -223,9 +223,9 @@ input {
     border: 1px solid black;
     margin: .5em;
     padding: .5em;
-    color: var(--text);
+    color: black;
     order:3;
-    background-image: url('https://images.unsplash.com/photo-1494253109108-2e30c049369b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80');
+    background-image: url('/images/kettle.jpg');
     background-size: cover;
     justify-content: space-between;
     align-items: left;
@@ -240,21 +240,39 @@ input {
     padding: .5em;
     color: var(--text);
     order:4;
-    background-image: url('https://images.unsplash.com/photo-1494253109108-2e30c049369b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80');
+    background-image: url('/images/scale2.jpg');
     background-size: cover;
     justify-content: space-between;
     align-items: left;
 }
+.contentLearnTwoContainer, .contentLearnThreeContainer, .contentLearnFourContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+}
+.contentLearnFourContainer{
+    background: rgba(0,0,0,.15);
+}
+
 .contentLearnTwoText, .contentLearnThreeText, .contentLearnFourText{
     font-size: 18px;
-    font-weight: 300;
+    font-weight: 400;
     display: none;
 }
 .contentLearnTwo:hover .contentLearnTwoText, .contentLearnThree:hover .contentLearnThreeText, .contentLearnFour:hover .contentLearnFourText{
     display: block;
 }
-.contentLearnTwo:hover, .contentLearnThree:hover, .contentLearnFour:hover {
-    opacity: .9;
+.contentLearnTwo:hover .contentLearnTwoContainer{
+    background: rgba(0,0,0,.3);
+}
+.contentLearnThree:hover .contentLearnThreeContainer{
+    background: rgba(255,255,255,.3);
+}
+.contentLearnFour:hover .contentLearnFourContainer{
+    background: rgba(0,0,0,.3);
 }
 .contentRootLearn .title{
     font-size: 60px;
@@ -267,7 +285,7 @@ input {
     flex-basis: 40%;
     height: 40vh;
     order:1;
-    background-image: url('https://images.unsplash.com/photo-1494253109108-2e30c049369b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80');
+    background-image: url('/images/chemex-coffee-maker-coffee-arabica-robusta.jpg');
     background-size: cover;
 }
 .contentAboutTwo{
@@ -329,7 +347,7 @@ input {
     flex-basis: 40%;
     height: 40vh;
     order: 4;
-    background-image: url('https://images.unsplash.com/photo-1494253109108-2e30c049369b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80');
+    background-image: url('/images/mug-close-pour.jpg');
     background-size: cover;
 }
 .contentBrew{

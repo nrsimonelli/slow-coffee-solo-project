@@ -12,7 +12,7 @@ class BrewContent extends Component{
         <div className='contentBrewImageContainer'>
           <div className='contentBrewImage'>
             <div className='contentBrewText'>
-              <p>Title text will go here</p>
+              <p>Are You Ready?</p>
             </div>
           </div>
           <Button
