@@ -37,6 +37,30 @@ router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
       .catch(() => res.sendStatus(500));
 });
 
+router.put('/update', rejectUnauthenticated, (req, res) => {
+  console.log('in feedback router update!');
+  console.log('req.body:', req.body);
+
+  const timing = req.body.timing;
+  const temp = req.body.temp;
+  const target = req.body.target;
+  const taste = req.body.taste;
+  const comment = req.body.comment;
+  const feedback_id = req.body.id;
+
+  const queryString = 
+    `UPDATE "feedback" SET timing = $1, temp = $2, target = $3, taste = $4, comment = $5 WHERE feedback.id = $6;`;
+  
+  console.log(queryString);
+  
+  pool.query(queryString, [timing, temp, target, taste, comment, feedback_id])
+    .then(() => res.sendStatus(201))
+    .catch(error => {
+      console.log('error in upadate feedback router', error);
+      res.sendStatus(500);
+  });
+});
+
 router.post('/send', rejectUnauthenticated, (req, res) => {  
     console.log(req.body);
     const timing = req.body.timing;

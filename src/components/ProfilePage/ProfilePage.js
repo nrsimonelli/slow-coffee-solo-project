@@ -50,6 +50,11 @@ class ProfilePage extends Component {
     name: '',
     date: '',
     editMode: false,
+    timing: '',
+    temp: '',
+    target: '',
+    taste: '',
+    comment: '',
   }
 
   componentDidMount() {
@@ -69,21 +74,17 @@ class ProfilePage extends Component {
     }
     
   }
-  handleDateChange = (event) => {
-    this.setState({
-      date: event.target.value
-    })
-    console.log('date is:', event.target.value)
+  handleChange = event => {
+    this.setState({ 
+      [event.target.name]: event.target.value 
+    });
+    console.log('you are putting this in state:', event.target.value);
   }
-  handleNameChange = (event) => {
-    this.setState({
-      name: event.target.value
-    })
-    console.log('name is:', event.target.value);
-  }
-
   handleTabChange = (event, value) => {
-    this.setState({ value });
+    this.setState({ 
+      value,
+      editMode: false 
+    });
   };
 
   getCoffee = () => {
@@ -107,7 +108,12 @@ class ProfilePage extends Component {
     this.setState({
       editMode: id,
       name: '',
-      date: ''
+      date: '',
+      timing: '',
+      temp: '',
+      target: '',
+      taste: '',
+      comment: '',
     })
     console.log('editMode:', this.state.editMode);
     
@@ -155,6 +161,26 @@ class ProfilePage extends Component {
       type: 'CLEAR_COFFEE'
     })
   }
+  updateFeedback = (id) => {
+    console.log('you updated this row in feedback', id);
+    this.setState({
+      editMode: false
+    })
+    this.props.dispatch({
+      type: 'UPDATE_FEEDBACK',
+      payload: {
+        timing: this.state.timing,
+        temp: this.state.temp,
+        target: this.state.target,
+        taste: this.state.taste,
+        comment: this.state.comment,
+        id: id
+      }
+    })
+    this.props.dispatch({
+      type: 'CLEAR_FEEDBACK'
+    })
+  }
 
   render() {
     const {classes} = this.props;
@@ -193,9 +219,10 @@ class ProfilePage extends Component {
                                         {this.state.editMode === row.id ? (
                                           <input 
                                           type='text' 
+                                          name='name'
                                           value={this.state.name} 
                                           placeholder={row.name}
-                                          onChange={this.handleNameChange}>
+                                          onChange={this.handleChange}>
                                             
                                           </input>
                                         ) : (
@@ -203,14 +230,14 @@ class ProfilePage extends Component {
                                           {row.name}
                                           </>
                                         )}
-                                        
                                       </TableCell>
                                       <TableCell align='right'>
                                         {this.state.editMode === row.id ? (
                                           <input 
-                                          type='date' 
+                                          type='date'
+                                          name='date' 
                                           value={this.state.date} 
-                                          onChange={this.handleDateChange}>
+                                          onChange={this.handleChange}>
                                             
                                           </input>
                                         ) : (
@@ -220,7 +247,6 @@ class ProfilePage extends Component {
                                         )}
                                       </TableCell>
                                       <TableCell align='right'>
-                                        {/* <button className='updateButton' onClick={()=>this.updateCoffee(row.id)}>/</button> */}
                                         {this.state.editMode === row.id ? (
                                           <>
                                           <Button
@@ -272,21 +298,139 @@ class ProfilePage extends Component {
                                     <TableCell align='right'>Target</TableCell>
                                     <TableCell align='right'>Taste</TableCell>
                                     <TableCell align='right'>Date</TableCell>
-                                    <TableCell align='right'>Remove</TableCell>
+                                    <TableCell align='right'>Edit</TableCell>
                                   </TableRow>
                                 </TableHead>
                                 <TableBody>
                                   {feedbackRows.map(row => (
                                     <TableRow key={row.id}>
                                       <TableCell component='th' scope='row'>
-                                        {row.comment}
+                                      {this.state.editMode === row.id ? (
+                                          <textarea 
+                                          name='comment'
+                                          value={this.state.comment} 
+                                          placeholder={row.comment}
+                                          onChange={this.handleChange}>
+                                            
+                                          </textarea>
+                                        ) : (
+                                          <>
+                                          {row.comment}
+                                          </>
+                                        )}
+                                        
                                       </TableCell>
-                                      <TableCell align='right'>{row.timing}</TableCell>
-                                      <TableCell align='right'>{row.temp}</TableCell>
-                                      <TableCell align='right'>{row.target}</TableCell>
-                                      <TableCell align='right'>{row.taste}</TableCell>
+                                      <TableCell align='right'>
+                                      {this.state.editMode === row.id ? (
+                                          <input 
+                                          type='number'
+                                          name='timing'
+                                          min='1'
+                                          max='5'
+                                          value={this.state.timing} 
+                                          placeholder={row.timing}
+                                          onChange={this.handleChange}>
+                                            
+                                          </input>
+                                        ) : (
+                                          <>
+                                          {row.timing}
+                                          </>
+                                        )}
+                                        
+                                        </TableCell>
+                                      <TableCell align='right'>
+                                      {this.state.editMode === row.id ? (
+                                          <input 
+                                          type='number'
+                                          name='temp'
+                                          min='1'
+                                          max='5'
+                                          value={this.state.temp} 
+                                          placeholder={row.temp}
+                                          onChange={this.handleChange}>
+                                            
+                                          </input>
+                                        ) : (
+                                          <>
+                                          {row.temp}
+                                          </>
+                                        )}
+                                        
+                                        </TableCell>
+                                      <TableCell align='right'>
+                                      {this.state.editMode === row.id ? (
+                                          <input 
+                                          type='number'
+                                          name='target'
+                                          min='1'
+                                          max='5'
+                                          value={this.state.target} 
+                                          placeholder={row.target}
+                                          onChange={this.handleChange}>
+                                            
+                                          </input>
+                                        ) : (
+                                          <>
+                                          {row.target}
+                                          </>
+                                        )}
+                                        
+                                        </TableCell>
+                                      <TableCell align='right'>
+                                      {this.state.editMode === row.id ? (
+                                          <input 
+                                          type='number'
+                                          name='taste'
+                                          min='1'
+                                          max='5'
+                                          value={this.state.taste} 
+                                          placeholder={row.taste}
+                                          onChange={this.handleChange}>
+                                            
+                                          </input>
+                                        ) : (
+                                          <>
+                                          {row.taste}
+                                          </>
+                                        )}
+                                        
+                                        </TableCell>
                                       <TableCell align='right'>{row.date}</TableCell>
-                                      <TableCell align='right'><button className='deleteButton' onClick={()=>this.deleteFeedback(row.id)}>x</button></TableCell>
+                                      <TableCell align='right'>
+                                        {this.state.editMode === row.id ? (
+                                          <>
+                                          <Button
+                                            className='button'
+                                            variant='contained'
+                                            color='primary'
+                                            onClick={()=>this.updateFeedback(row.id)}>
+                                            save
+                                          </Button>
+                                          <Button 
+                                            className='deleteButton'
+                                            color='secondary'
+                                            variant='contained'
+                                            onClick={()=>this.deleteFeedback(row.id)}>
+                                              trash
+                                          </Button>
+                                          <Button 
+                                            className='button' 
+                                            variant='contained'
+                                            onClick={()=>this.toggleEdit(false)}>
+                                              cancel
+                                          </Button>
+                                          </>
+                                        ) : (
+                                          <Button 
+                                            className='button'
+                                            variant='contained'
+                                            color='primary'
+                                            onClick={()=>this.toggleEdit(row.id)}>
+                                              edit
+                                          </Button>
+                                        )}
+                                      </TableCell>
                                     </TableRow>
                                   ))}
                                 </TableBody>

@@ -31,11 +31,20 @@ function* fetchFeedback(action) {
       console.log('Error with user feedback:', error);   
   }
 }
+function* updateFeedback(action) {
+  try{
+      console.log('in update feedback saga', action.payload);
+      yield axios.put('api/feedback/update', action.payload);
+  } catch (error) {
+      console.log('error with update feedback', error);
+  }
+}
 
 function* feedbackSaga() {
   yield takeLatest('ADD_FEEDBACK', addFeedback);
   yield takeLatest('FETCH_FEEDBACK', fetchFeedback);
   yield takeLatest('REMOVE_FEEDBACK', removeFeedback);
+  yield takeLatest('UPDATE_FEEDBACK', updateFeedback);
 }
 
 export default feedbackSaga;

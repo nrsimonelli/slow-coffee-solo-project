@@ -129,7 +129,7 @@ class SetupPage extends Component {
     this.setState({
       [propertyName]: event.target.value,
     });
-    console.log(this.state);
+    console.log(this.state.propertyName);
   }
 
   changeAddButton = (logic) => {
