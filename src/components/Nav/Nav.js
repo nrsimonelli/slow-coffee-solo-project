@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 
 const Nav = (props) => (
@@ -10,18 +11,21 @@ const Nav = (props) => (
     </Link>
     <div className="nav-right">
       {props.user.id ? 
-        <LogOutButton className='nav-link' />
+        <div className='nav-link' onClick={() => props.dispatch({ type: 'LOGOUT' })}>
+          <i className='material-icons md-24'>power_settings_new</i>
+          </div>
         :
-        <Link className='nav-link' to='/login'>Login / Register</Link>}
+        <Link className='nav-link' to='/login'>
+          <i className='material-icons md-24'>login</i>
+        </Link>}
       
-      {/* Show the link to the info page and the logout button if the user is logged in */}
       {props.user.id && (
         <>
           <Link className="nav-link" to="/profile">
-            My Coffee
+            <i className='material-icons md-24'>person</i>
           </Link>
           <Link className='nav-link' to='/setup'>
-            Start
+            <i className='material-icons md-24'>local_cafe</i>
           </Link>
         </>
       )}
@@ -40,4 +44,4 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps)(Nav);
+export default withRouter(connect(mapStateToProps)(Nav));

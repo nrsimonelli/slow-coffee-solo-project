@@ -39,7 +39,7 @@ function* addCoffee(action) {
 function* updateCoffee(action) {
   try{
       console.log('in update coffee saga', action.payload);
-      yield axios.put('api/coffee/update', action.payload);
+      yield axios.put('api/coffee/update/' + action.payload.id, action.payload);
   } catch (error) {
       console.log('error with update coffee', error);
   }

@@ -4,7 +4,7 @@ import AboutContent from '../AboutContent/AboutContent';
 import LearnContent from '../LearnContent/LearnContent';
 import BrewContent from '../BrewContent/BrewContent';
 import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
+import { withRouter } from 'react-router-dom'
 
 class Home extends Component {
 
@@ -21,7 +21,6 @@ class Home extends Component {
         <AboutContent />
         <LearnContent />
         <BrewContent />
-        <Footer />
       </div>
     );
   }
@@ -33,4 +32,4 @@ const mapStateToProps = (state) => ({
 });
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(Home);
+export default withRouter(connect(mapStateToProps)(Home));

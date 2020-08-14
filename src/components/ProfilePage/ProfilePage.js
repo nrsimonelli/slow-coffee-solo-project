@@ -16,6 +16,7 @@ import Paper from '@material-ui/core/Paper';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
 
 
 function TabContainer(props) {
@@ -104,16 +105,17 @@ class ProfilePage extends Component {
       }
     })
   }
-  toggleEdit = (id) => {
+  toggleEdit = (row) => {
+    console.log('row:', row);
     this.setState({
-      editMode: id,
-      name: '',
-      date: '',
-      timing: '',
-      temp: '',
-      target: '',
-      taste: '',
-      comment: '',
+      editMode: row.id,
+      name: row.name,
+      date: row.roast_date,
+      timing: row.timing,
+      temp: row.temp,
+      target: row.target,
+      taste: row.taste,
+      comment: row.comment,
     })
     console.log('editMode:', this.state.editMode);
     
@@ -191,7 +193,7 @@ class ProfilePage extends Component {
     return (
       <div className='myTheme'>
         <Nav />
-        <h1 id="welcome">Profile, {this.props.user.username}!</h1>
+        <h1 id="welcome">{this.props.user.username}</h1>
         
         <div className={classes.root}>
           <AppBar color='default' position='static'>
@@ -209,7 +211,7 @@ class ProfilePage extends Component {
                                   <TableRow>
                                     <TableCell >Name</TableCell>
                                     <TableCell align='right'>Roast Date</TableCell>
-                                    <TableCell align='right'>Edit</TableCell>
+                                    <TableCell align='right'><i className='material-icons'>create</i></TableCell>
                                   </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -217,14 +219,14 @@ class ProfilePage extends Component {
                                     <TableRow key={row.id}>
                                       <TableCell component='th' scope='row'>
                                         {this.state.editMode === row.id ? (
-                                          <input 
+                                          <Input 
                                           type='text' 
                                           name='name'
                                           value={this.state.name} 
                                           placeholder={row.name}
                                           onChange={this.handleChange}>
                                             
-                                          </input>
+                                          </Input>
                                         ) : (
                                           <>
                                           {row.name}
@@ -233,13 +235,13 @@ class ProfilePage extends Component {
                                       </TableCell>
                                       <TableCell align='right'>
                                         {this.state.editMode === row.id ? (
-                                          <input 
+                                          <Input 
                                           type='date'
                                           name='date' 
                                           value={this.state.date} 
                                           onChange={this.handleChange}>
                                             
-                                          </input>
+                                          </Input>
                                         ) : (
                                           <>
                                           {row.roast_date}
@@ -249,33 +251,33 @@ class ProfilePage extends Component {
                                       <TableCell align='right'>
                                         {this.state.editMode === row.id ? (
                                           <>
-                                          <Button
-                                            className='button'
-                                            variant='contained'
-                                            color='primary'
+                                          <i
+                                            className='material-icons'
+                                            
+                                            
                                             onClick={()=>this.updateCoffee(row.id)}>
-                                            save
-                                          </Button>
-                                          <Button 
-                                            className='deleteButton'
-                                            color='secondary'
-                                            variant='contained'
+                                            done
+                                          </i>
+                                          <i 
+                                            className='material-icons'
+                                            
+                                            
                                             onClick={()=>this.deleteCoffee(row.id)}>
-                                              trash
-                                          </Button>
-                                          <Button 
-                                            className='button' 
-                                            variant='contained'
+                                              delete
+                                          </i>
+                                          <i
+                                            className='material-icons' 
+                                            
                                             onClick={()=>this.toggleEdit(false)}>
-                                              cancel
-                                          </Button>
+                                              close
+                                          </i>
                                           </>
                                         ) : (
                                           <Button 
                                             className='button'
                                             variant='contained'
                                             color='primary'
-                                            onClick={()=>this.toggleEdit(row.id)}>
+                                            onClick={()=>this.toggleEdit(row)}>
                                               edit
                                           </Button>
                                         )}
@@ -297,8 +299,8 @@ class ProfilePage extends Component {
                                     <TableCell align='right'>Temperature</TableCell>
                                     <TableCell align='right'>Target</TableCell>
                                     <TableCell align='right'>Taste</TableCell>
-                                    <TableCell align='right'>Date</TableCell>
-                                    <TableCell align='right'>Edit</TableCell>
+                                    {/* <TableCell align='right'>Date</TableCell> */}
+                                    <TableCell align='right'><i className='material-icons'>create</i></TableCell>
                                   </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -306,13 +308,16 @@ class ProfilePage extends Component {
                                     <TableRow key={row.id}>
                                       <TableCell component='th' scope='row'>
                                       {this.state.editMode === row.id ? (
-                                          <textarea 
+                                          <Input
+                                          className='notes'
+                                          type='textarea' 
                                           name='comment'
                                           value={this.state.comment} 
                                           placeholder={row.comment}
                                           onChange={this.handleChange}>
+                                          
                                             
-                                          </textarea>
+                                          </Input>
                                         ) : (
                                           <>
                                           {row.comment}
@@ -322,7 +327,7 @@ class ProfilePage extends Component {
                                       </TableCell>
                                       <TableCell align='right'>
                                       {this.state.editMode === row.id ? (
-                                          <input 
+                                          <Input 
                                           type='number'
                                           name='timing'
                                           min='1'
@@ -331,7 +336,7 @@ class ProfilePage extends Component {
                                           placeholder={row.timing}
                                           onChange={this.handleChange}>
                                             
-                                          </input>
+                                          </Input>
                                         ) : (
                                           <>
                                           {row.timing}
@@ -341,7 +346,7 @@ class ProfilePage extends Component {
                                         </TableCell>
                                       <TableCell align='right'>
                                       {this.state.editMode === row.id ? (
-                                          <input 
+                                          <Input 
                                           type='number'
                                           name='temp'
                                           min='1'
@@ -350,7 +355,7 @@ class ProfilePage extends Component {
                                           placeholder={row.temp}
                                           onChange={this.handleChange}>
                                             
-                                          </input>
+                                          </Input>
                                         ) : (
                                           <>
                                           {row.temp}
@@ -360,7 +365,7 @@ class ProfilePage extends Component {
                                         </TableCell>
                                       <TableCell align='right'>
                                       {this.state.editMode === row.id ? (
-                                          <input 
+                                          <Input 
                                           type='number'
                                           name='target'
                                           min='1'
@@ -369,7 +374,7 @@ class ProfilePage extends Component {
                                           placeholder={row.target}
                                           onChange={this.handleChange}>
                                             
-                                          </input>
+                                          </Input>
                                         ) : (
                                           <>
                                           {row.target}
@@ -379,7 +384,7 @@ class ProfilePage extends Component {
                                         </TableCell>
                                       <TableCell align='right'>
                                       {this.state.editMode === row.id ? (
-                                          <input 
+                                          <Input 
                                           type='number'
                                           name='taste'
                                           min='1'
@@ -388,7 +393,7 @@ class ProfilePage extends Component {
                                           placeholder={row.taste}
                                           onChange={this.handleChange}>
                                             
-                                          </input>
+                                          </Input>
                                         ) : (
                                           <>
                                           {row.taste}
@@ -396,37 +401,32 @@ class ProfilePage extends Component {
                                         )}
                                         
                                         </TableCell>
-                                      <TableCell align='right'>{row.date}</TableCell>
-                                      <TableCell align='right'>
+                                      {/* <TableCell align='right'>{row.date}</TableCell> */}
+                                      <TableCell align='right' className='tableIcons'>
                                         {this.state.editMode === row.id ? (
                                           <>
-                                          <Button
-                                            className='button'
-                                            variant='contained'
-                                            color='primary'
+                                          <i
+                                            className='material-icons'                                            
                                             onClick={()=>this.updateFeedback(row.id)}>
-                                            save
-                                          </Button>
-                                          <Button 
-                                            className='deleteButton'
-                                            color='secondary'
-                                            variant='contained'
+                                            done
+                                          </i>
+                                          <i 
+                                            className='material-icons'
                                             onClick={()=>this.deleteFeedback(row.id)}>
-                                              trash
-                                          </Button>
-                                          <Button 
-                                            className='button' 
-                                            variant='contained'
+                                              delete
+                                          </i>
+                                          <i 
+                                            className='material-icons' 
                                             onClick={()=>this.toggleEdit(false)}>
-                                              cancel
-                                          </Button>
+                                              close
+                                          </i>
                                           </>
                                         ) : (
                                           <Button 
                                             className='button'
                                             variant='contained'
                                             color='primary'
-                                            onClick={()=>this.toggleEdit(row.id)}>
+                                            onClick={()=>this.toggleEdit(row)}>
                                               edit
                                           </Button>
                                         )}

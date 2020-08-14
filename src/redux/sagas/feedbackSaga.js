@@ -34,7 +34,7 @@ function* fetchFeedback(action) {
 function* updateFeedback(action) {
   try{
       console.log('in update feedback saga', action.payload);
-      yield axios.put('api/feedback/update', action.payload);
+      yield axios.put('api/feedback/update/' + action.payload.id, action.payload);
   } catch (error) {
       console.log('error with update feedback', error);
   }

@@ -37,7 +37,7 @@ router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
       .catch(() => res.sendStatus(500));
 });
 
-router.put('/update', rejectUnauthenticated, (req, res) => {
+router.put('/update/:id', rejectUnauthenticated, (req, res) => {
   console.log('in feedback router update!');
   console.log('req.body:', req.body);
 

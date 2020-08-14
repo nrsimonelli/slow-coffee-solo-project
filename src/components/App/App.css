@@ -86,7 +86,6 @@ input {
     align-items: left;
     width: 100vw;
     height: 100vh;
-    border: 2px solid;
     overflow: scroll;
 }
 .contentRootHorizontal{
@@ -100,6 +99,7 @@ input {
     height: 100vh;
     border: 2px solid;
     overflow: scroll;
+    background-color: var(--text);
 }
 .contentRootAbout{
   margin: 0;
@@ -182,7 +182,6 @@ input {
 
 }
 .contentThird{
-    border: 1px solid pink;
     margin: .5em;
     padding: .5em;
 
@@ -404,5 +403,60 @@ input {
 footer {
     margin-top: 80px;
 }
+#welcome{
+    text-align: center;
+    font-weight: 300;
+    padding: .2em;
+}
+h3{
+    padding-left: 2em;
+    font-weight: 300;
+}
+i{
+    cursor: default;
+}
+i:hover{
+    opacity: .7;
+}
+.tableIcons{
+    min-width: 72px;
+}
+.material-icons.md-36{
+    font-size: 36px;
+}
+.material-icons.md-24{
+    font-size: 24px;
+}
+.material-icons.md-48{
+    font-size: 48px;
+}
+.material-icons.padding{
+    padding-left: 5vw;
+}
+.material-icons.space{
+    padding-left: 5px;
+}
+
+.setupContainer{
+    height: 100%;
+}
+.setupInputContainer{
+    width: 100%;
+}
+h2{
+    font-weight: 300;
+    width: 100vw;
+    padding: 10% 0px 10% 0px;
+    text-align: center;
+}
+.nav.set{
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.setupSubhead{
+    margin-top: 100px;
+}
+
 
 

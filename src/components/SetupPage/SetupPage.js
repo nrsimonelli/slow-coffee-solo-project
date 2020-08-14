@@ -14,6 +14,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import { Link } from 'react-router-dom';
+
 
 
 
@@ -25,12 +27,10 @@ const styles = theme => ({
   margin: {
     height: theme.spacing(3),
   },
-  button: {
-    marginRight: theme.spacing(1),
-  },
   instructions: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
+    textAlign: 'center',
   },
   menuSelect: {
     display: 'flex',
@@ -64,9 +64,9 @@ function getStepContent(step) {
     case 0:
       return 'Which coffee will you be using?';
     case 1:
-      return 'How many cups are you making?';
+      return 'How many cups will you be making?';
     case 2:
-      return 'Hit ready once you have grinded to the target amount';
+      return '~';
     case 3:
       return 'Sweetness-Acidity Profile'
     case 4:
@@ -187,9 +187,24 @@ class SetupPage extends Component {
   
 
     return (
+
       <div className='contentRootVerticalSetup'>
+        <div className="nav set">
+          <Link to="/home">
+            <span className="nav-title">Slow</span>
+            <span className='nav-title-two'>Coffee</span>
+          </Link>
+          <div className="nav-right">
+            <Link className="nav-link" to="/profile">
+              <i className='material-icons md-24'>person</i>
+            </Link>
+            <Link className='nav-link' to='/home'>
+              <i className='material-icons md-24'>home</i>
+            </Link>
+          </div>
+        </div>
         <div>
-        <h1>setup</h1>
+        <h1 id='welcome' className='setupSubhead'>Setup</h1>
         <Stepper activeStep={activeStep}>
           {steps.map((label, index) => {
             const props = {};
@@ -206,27 +221,27 @@ class SetupPage extends Component {
         <div>
           {activeStep === 2 && (
             <div>
-              <Typography className={classes.instructions}>
+              <h2>
                 Grind coffee to {this.state.targetVolume * 15}g, bring water to a boil, and proceed to finish
-              </Typography>
+              </h2>
               <div>
 
               </div>
-              <Button onClick={this.handleReset} className={classes.button}>
+              <Button onClick={this.handleReset} className='setupButton'>
                 Reset
               </Button>
               <Button
                   variant="contained"
                   color="primary"
                   onClick={this.handleGo}
-                  className={classes.button}
+                  className='setupButton'
                 >
                 Finish
                 </Button>
                 <Button
                   variant="contained"
                   onClick={this.handleNext}
-                  className={classes.button}
+                  className='setupButton'
                 >
                 Advanced
                 </Button>
@@ -267,7 +282,7 @@ class SetupPage extends Component {
         </FormControl>
         <div>
         {activeStep === 0 && this.state.addButton && (
-          <div>
+          <div className='setupInputContainer'>
             <Input 
             onChange={this.handleInputChangeFor('name')} 
             type='text' 
@@ -278,22 +293,22 @@ class SetupPage extends Component {
               type='date' 
               name='date' 
               value={this.state.date}/>
-            <Button
+            <i className='material-icons space'
               onClick={this.addThisCoffee}>
-                Add
-            </Button>
-            <Button
+                check
+            </i>
+            <i className='material-icons space'
               onClick={()=>this.changeAddButton(false)}>
-                x
-              </Button>
+                close
+              </i>
           </div>
          )}
         {activeStep === 0 && this.state.addButton === false && (
-            <Button
-            className={classes.button}
+            <i
+            className='material-icons md-48 padding'
             onClick={()=>this.changeAddButton(true)}>
-            New Coffee? Click to add to your collection
-          </Button>
+            add
+          </i>
           )}
           </div>
         </form>
@@ -356,6 +371,12 @@ class SetupPage extends Component {
             </FormControl>
             {this.state.targetVolume >= 0.1 && (<h3>Coffee Needed: {this.state.targetVolume * 15}g</h3>)}
             </form>
+          )}
+          {activeStep === 2 && (
+            <div className='setupContainer'>
+              <div className='setupImage'>
+              </div>
+            </div>
           )}
         </div>
         

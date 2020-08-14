@@ -10,6 +10,7 @@ import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom';
 
 const styles = theme => ({
   clockTitle: {
@@ -62,10 +63,13 @@ const styles = theme => ({
   },
   smallItalic: {
     marginBottom: 40,
+    color: 'black',
+    fontStyle: 'italic',
 
   },
   smallRegular: {
     marginBottom: 40,
+    color: 'black',
   }
   
 });
@@ -173,11 +177,17 @@ class BrewPage extends Component {
 
     return (
       <div className='myTheme'>
-       <center>
-       <h1>
-        Brew Time
-       </h1>
-       </center>
+       <div className='nav'>
+       <span className="nav-title">Brew</span><span className='nav-title-two'>Time</span>
+       <div className="nav-right">
+            <Link className="nav-link" to="/profile">
+              <i className='material-icons md-24'>person</i>
+            </Link>
+            <Link className='nav-link' to='/home'>
+              <i className='material-icons md-24'>home</i>
+            </Link>
+          </div>
+       </div>
       <div className='contentRootHorizontal'>
         <div calssName='contentThird'>
       <Stepper activeStep={activeStep} orientation="vertical">
@@ -205,7 +215,7 @@ class BrewPage extends Component {
         <div className={classes.smallItalic}>wait...</div>
       )}
       {clockStage  >= 1 && this.isOdd(clockStage) === 1 && (
-        <div className={classes.smallRegular}>Pour</div>
+        <div className={classes.smallItalic}>pour</div>
       )}
     </div>
       <div className={classes.timerWrapper}>
