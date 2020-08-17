@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
+import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
+
 
 class FeedbackPage extends Component {
   
@@ -32,6 +33,7 @@ class FeedbackPage extends Component {
         },
       });
       alert('feedback sent');
+      this.props.history.push('/home')
   } // end sendFeedback
 
   handleInputChangeFor = propertyName => (event) => {
@@ -43,10 +45,13 @@ class FeedbackPage extends Component {
 
   render() {
     return (
-      <div className='myTheme'>
-        <Nav />
-        <form onSubmit={this.sendFeedback}>
-          <h1>Feedback</h1>
+      <div className='feedbackRoot'>
+        
+        
+        <div className='feedbackDiv'>
+          <div>
+          <p>Feedback</p>
+          </div>
           <div>
             <label htmlFor="timing">
               Timing
@@ -90,29 +95,31 @@ class FeedbackPage extends Component {
           <div>
             <label htmlFor="comment">
               Comments
-              <textarea onChange={this.handleInputChangeFor('comment')} type='textarea' name='comment' value={this.state.comment}/>
+              <Input onChange={this.handleInputChangeFor('comment')} type='textarea' id='comments' name='comment' value={this.state.comment}/>
             </label>
           </div>
           
           <div>
-            <input
+            <Button
               className="submit"
               type="submit"
               name="submit"
               value="Submit"
-            />
+              onClick={this.sendFeedback}
+              variant='contained'
+            >
+              Submit
+              </Button>
           </div>
-        </form>
-        <Footer />
+          </div>
+       
       </div>
     ); // end render
   } // end return
 } // end class
 
-// Instead of taking everything from state, we just want the user info.
 const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-// this allows us to use <App /> in index.js
 export default connect(mapStateToProps)(FeedbackPage);

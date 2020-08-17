@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
+import Input from '@material-ui/core/Input'
+
 
 class LoginPage extends Component {
   state = {
@@ -34,8 +34,12 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div className='myTheme'>
-        <Nav />
+      <div className='contentRootLogin'>
+        <div className='contentLoginImageContainer'>
+          <div className='contentLoginImage'>
+            <div className='contentLoginText'>
+
+       
         {this.props.errors.loginMessage && (
           <h2
             className="alert"
@@ -44,57 +48,66 @@ class LoginPage extends Component {
             {this.props.errors.loginMessage}
           </h2>
         )}
-        <form onSubmit={this.login}>
-          <h1>Login</h1>
+        <div>
+          <p>Log In</p>
           <div>
             <label htmlFor="username">
               Username:
-              <input
+              <Input
                 type="text"
                 name="username"
+                id='username'
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
               />
             </label>
           </div>
+        
+        
           <div>
             <label htmlFor="password">
               Password:
-              <input
+              <Input
                 type="password"
                 name="password"
+                id='password'
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />
             </label>
           </div>
-          <div>
-            <input
-              className="log-in"
+        </div>
+          <span>
+            <button
+              className="link-button"
               type="submit"
               name="submit"
               value="Log In"
-            />
-          </div>
-        </form>
-        <center>
-          <button
+              onClick={this.login}
+            >
+              Log In
+              </button>
+              <span> | </span>
+              <button
             type="button"
             className="link-button"
             onClick={() => {this.props.history.push('/register')}}
           >
             Register
           </button>
-        </center>
-        <Footer />
+        </span>
+        
+       
+          
+        
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-// Instead of taking everything from state, we just want the error messages.
-// if you wanted you could write this code like this:
-// const mapStateToProps = ({errors}) => ({ errors });
 const mapStateToProps = state => ({
   errors: state.errors,
 });

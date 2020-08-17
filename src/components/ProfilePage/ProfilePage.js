@@ -460,5 +460,4 @@ const mapStateToProps = (state) => ({
   feedback: state.feedback
 });
 
-// this allows us to use <App /> in index.js
 export default connect(mapStateToProps)(withStyles(styles)(ProfilePage));

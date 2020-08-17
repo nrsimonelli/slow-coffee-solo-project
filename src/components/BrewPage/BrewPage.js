@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import ReactDOM from "react-dom";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 
@@ -133,7 +131,6 @@ class BrewPage extends Component {
     }
   }
 
-
   setClockStage = () => {
     if(this.state.clockStage === 1){
       this.nextStep();
@@ -221,9 +218,10 @@ class BrewPage extends Component {
       <div className={classes.timerWrapper}>
         {clockStage === 0 ? (
           <CountdownCircleTimer
-          duration={10}
-          colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
+          duration={3}
+          colors={[["#00d2ff", 0.33],["#3ad59f", 0.33], ["#3a47d5"]]}
         >
+          
           {renderTime}
         </CountdownCircleTimer>
         ) : (
@@ -232,8 +230,8 @@ class BrewPage extends Component {
         {clockStage === 1 && (
           <CountdownCircleTimer
           isPlaying
-          duration={10}
-          colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
+          duration={3}
+          colors={[["#00d2ff", 0.33],["#3ad59f", 0.33], ["#3a47d5"]]}
           onComplete={this.setClockStage}
         >
           {renderTime}
@@ -242,8 +240,8 @@ class BrewPage extends Component {
         {clockStage === 2 && (
           <CountdownCircleTimer
           isPlaying
-          duration={35}
-          colors={[["#121212", 0.33], ["#454545", 0.33], ["#787878"]]}
+          duration={2}
+          colors={[["#3a47d5", 0.5], ["#00d2ff"]]}
           onComplete={this.setClockStage}
         >
           {renderTime}
@@ -252,8 +250,8 @@ class BrewPage extends Component {
         {clockStage === 3 && (
           <CountdownCircleTimer
           isPlaying
-          duration={8}
-          colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
+          duration={3}
+          colors={[["#00d2ff", 0.33],["#3ad59f", 0.33], ["#3a47d5"]]}
           onComplete={this.setClockStage}
         >
           {renderTime}
@@ -262,8 +260,8 @@ class BrewPage extends Component {
         {clockStage === 4 && (
           <CountdownCircleTimer
           isPlaying
-          duration={32}
-          colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
+          duration={2}
+          colors={[["#3a47d5", 0.5], ["#00d2ff"]]}
           onComplete={this.setClockStage}
         >
           {renderTime}
@@ -272,8 +270,8 @@ class BrewPage extends Component {
         {clockStage === 5 && (
           <CountdownCircleTimer
           isPlaying
-          duration={8}
-          colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
+          duration={3}
+          colors={[["#00d2ff", 0.33],["#3ad59f", 0.33], ["#3a47d5"]]}
           onComplete={this.setClockStage}
         >
           {renderTime}
@@ -282,8 +280,8 @@ class BrewPage extends Component {
         {clockStage === 6 && (
           <CountdownCircleTimer
           isPlaying
-          duration={32}
-          colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
+          duration={2}
+          colors={[["#3a47d5", 0.5], ["#00d2ff"]]}
           onComplete={this.setClockStage}
         >
           {renderTime}
@@ -292,8 +290,8 @@ class BrewPage extends Component {
         {clockStage === 7 && (
           <CountdownCircleTimer
           isPlaying
-          duration={8}
-          colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
+          duration={3}
+          colors={[["#00d2ff", 0.33],["#3ad59f", 0.33], ["#3a47d5"]]}
           onComplete={this.setClockStage}
         >
           {renderTime}
@@ -302,8 +300,8 @@ class BrewPage extends Component {
         {clockStage === 8 && (
           <CountdownCircleTimer
           isPlaying
-          duration={32}
-          colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
+          duration={2}
+          colors={[["#3a47d5", 0.5], ["#00d2ff"]]}
           onComplete={this.setClockStage}
         >
           {renderTime}
@@ -312,8 +310,8 @@ class BrewPage extends Component {
         {clockStage === 9 && (
           <CountdownCircleTimer
           isPlaying
-          duration={8}
-          colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
+          duration={3}
+          colors={[["#00d2ff", 0.33],["#3ad59f", 0.33], ["#3a47d5"]]}
           onComplete={this.setClockStage}
         >
           {renderTime}
@@ -322,8 +320,8 @@ class BrewPage extends Component {
         {clockStage >= 10 && (
           <CountdownCircleTimer
           isPlaying
-          duration={5}
-          colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
+          duration={2}
+          colors={[["#3a47d5", 0.5], ["#00d2ff"]]}
           onComplete={[false, 0]}
         >
           {renderTime}

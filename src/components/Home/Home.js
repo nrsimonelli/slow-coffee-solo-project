@@ -8,14 +8,13 @@ import { withRouter } from 'react-router-dom'
 
 class Home extends Component {
 
-  // this component doesn't do much to start, just renders some user info to the DOM
   render() {
     return (
       <div className='myTheme'>
         <Nav />
         
         <div className='contentRootHome'>
-          <p className='contentHomeText'>Yes.</p>
+          <p className='contentHomeText'></p>
           </div>
         
         <AboutContent />
@@ -26,10 +25,8 @@ class Home extends Component {
   }
 }
 
-// Instead of taking everything from state, we just want the user info.
 const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-// this allows us to use <App /> in index.js
 export default withRouter(connect(mapStateToProps)(Home));

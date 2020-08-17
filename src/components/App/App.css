@@ -25,15 +25,6 @@ body {
     margin: 50px;
 }
 
-form {
-    background-color: var(--lowlight);
-    width: 30%;
-    height: 250px;
-    margin: 20px auto;
-    padding: 25px;
-    border-radius: 2px;
-}
-
 input {
     margin: 5px;
     margin-bottom: 10px;
@@ -122,7 +113,7 @@ input {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background-image: url('/images/esspressoBirdsEye.jpg');
+    background-image: url('/images/mug-close.jpg');
     background-size: cover;
     width: 100vw;
     height: 100vh;
@@ -180,6 +171,78 @@ input {
     font-weight: 300;
     color: var(--text);
 
+}
+.contentRootLogin{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: left;
+    background-image: url('/images/pourover-dank.jpeg');
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    border: 2px solid;
+    overflow: scroll;
+    font-size: 60px;
+    font-weight: 300;
+    color: var(--text);
+}
+.contentLoginImageContainer{
+    
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,.2);
+    
+    
+}
+.contentLoginText{
+    font-size: 60px;
+    font-weight: 300;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+.contentRootRegister{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: left;
+    background-image: url('/images/sunset.jpeg');
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    border: 2px solid;
+    overflow: scroll;
+    font-size: 60px;
+    font-weight: 300;
+    color: var(--text);
+}
+.contentRegisterImageContainer{
+    
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,.2);
+    
+    
+}
+.contentRegisterText{
+    font-size: 60px;
+    font-weight: 300;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
 }
 .contentThird{
     margin: .5em;
@@ -390,6 +453,33 @@ input {
   cursor: pointer;
   outline:0;
 }
+.feedbackRoot{
+    color: var(--text);
+    font-size: 40px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    border: 2px solid;
+    background-image: url('/images/chemex-dark.jpeg');
+    background-size: cover;
+    overflow: scroll;
+}
+.feedbackDiv{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+}
 
 .nav-link:hover {
   opacity: .5;
@@ -456,6 +546,25 @@ h2{
 }
 .setupSubhead{
     margin-top: 100px;
+}
+#username[type=text]{
+    color: var(--text);
+    font-size: 60px;
+    font-weight: 300px;
+    width: 50vw;
+    padding-left: 10px;
+}
+#password[type=password]{
+    color: var(--text);
+    font-size: 60px;
+    font-weight: 300px; 
+    width: 50vw;
+}
+#comments[type=textarea]{
+    color: var(--text);
+    font-size: 24px;
+    font-weight: 300px; 
+    padding-left: 10px;
 }
 
 
