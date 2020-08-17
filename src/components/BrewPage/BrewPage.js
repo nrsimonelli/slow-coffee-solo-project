@@ -218,8 +218,8 @@ class BrewPage extends Component {
       <div className={classes.timerWrapper}>
         {clockStage === 0 ? (
           <CountdownCircleTimer
-          duration={3}
-          colors={[["#00d2ff", 0.33],["#3ad59f", 0.33], ["#3a47d5"]]}
+          duration={10}
+          colors={[["#4facfe", 0.33],["#43e97b", 0.33], ["#00f2fe"]]}
         >
           
           {renderTime}
@@ -230,8 +230,8 @@ class BrewPage extends Component {
         {clockStage === 1 && (
           <CountdownCircleTimer
           isPlaying
-          duration={3}
-          colors={[["#00d2ff", 0.33],["#3ad59f", 0.33], ["#3a47d5"]]}
+          duration={10}
+          colors={[["#4facfe", 0.33],["#43e97b", 0.33], ["#00f2fe"]]}
           onComplete={this.setClockStage}
         >
           {renderTime}
@@ -240,8 +240,8 @@ class BrewPage extends Component {
         {clockStage === 2 && (
           <CountdownCircleTimer
           isPlaying
-          duration={2}
-          colors={[["#3a47d5", 0.5], ["#00d2ff"]]}
+          duration={33}
+          colors={[["#00d2ff", 0.33],["#3ad59f", 0.33], ["#3a47d5"]]}
           onComplete={this.setClockStage}
         >
           {renderTime}
@@ -250,8 +250,8 @@ class BrewPage extends Component {
         {clockStage === 3 && (
           <CountdownCircleTimer
           isPlaying
-          duration={3}
-          colors={[["#00d2ff", 0.33],["#3ad59f", 0.33], ["#3a47d5"]]}
+          duration={10}
+          colors={[["#4facfe", 0.33],["#43e97b", 0.33], ["#00f2fe"]]}
           onComplete={this.setClockStage}
         >
           {renderTime}
@@ -260,8 +260,8 @@ class BrewPage extends Component {
         {clockStage === 4 && (
           <CountdownCircleTimer
           isPlaying
-          duration={2}
-          colors={[["#3a47d5", 0.5], ["#00d2ff"]]}
+          duration={33}
+          colors={[["#00d2ff", 0.33],["#3ad59f", 0.33], ["#3a47d5"]]}
           onComplete={this.setClockStage}
         >
           {renderTime}
@@ -270,8 +270,8 @@ class BrewPage extends Component {
         {clockStage === 5 && (
           <CountdownCircleTimer
           isPlaying
-          duration={3}
-          colors={[["#00d2ff", 0.33],["#3ad59f", 0.33], ["#3a47d5"]]}
+          duration={10}
+          colors={[["#4facfe", 0.33],["#43e97b", 0.33], ["#00f2fe"]]}
           onComplete={this.setClockStage}
         >
           {renderTime}
@@ -280,8 +280,8 @@ class BrewPage extends Component {
         {clockStage === 6 && (
           <CountdownCircleTimer
           isPlaying
-          duration={2}
-          colors={[["#3a47d5", 0.5], ["#00d2ff"]]}
+          duration={33}
+          colors={[["#00d2ff", 0.33],["#3ad59f", 0.33], ["#3a47d5"]]}
           onComplete={this.setClockStage}
         >
           {renderTime}
@@ -290,8 +290,8 @@ class BrewPage extends Component {
         {clockStage === 7 && (
           <CountdownCircleTimer
           isPlaying
-          duration={3}
-          colors={[["#00d2ff", 0.33],["#3ad59f", 0.33], ["#3a47d5"]]}
+          duration={10}
+          colors={[["#4facfe", 0.33],["#43e97b", 0.33], ["#00f2fe"]]}
           onComplete={this.setClockStage}
         >
           {renderTime}
@@ -300,8 +300,8 @@ class BrewPage extends Component {
         {clockStage === 8 && (
           <CountdownCircleTimer
           isPlaying
-          duration={2}
-          colors={[["#3a47d5", 0.5], ["#00d2ff"]]}
+          duration={33}
+          colors={[["#00d2ff", 0.33],["#3ad59f", 0.33], ["#3a47d5"]]}
           onComplete={this.setClockStage}
         >
           {renderTime}
@@ -310,8 +310,8 @@ class BrewPage extends Component {
         {clockStage === 9 && (
           <CountdownCircleTimer
           isPlaying
-          duration={3}
-          colors={[["#00d2ff", 0.33],["#3ad59f", 0.33], ["#3a47d5"]]}
+          duration={10}
+          colors={[["#4facfe", 0.33],["#43e97b", 0.33], ["#00f2fe"]]}
           onComplete={this.setClockStage}
         >
           {renderTime}
@@ -320,8 +320,8 @@ class BrewPage extends Component {
         {clockStage >= 10 && (
           <CountdownCircleTimer
           isPlaying
-          duration={2}
-          colors={[["#3a47d5", 0.5], ["#00d2ff"]]}
+          duration={15}
+          colors={[["#00d2ff", 0.33],["#3ad59f", 0.33], ["#3a47d5"]]}
           onComplete={[false, 0]}
         >
           {renderTime}

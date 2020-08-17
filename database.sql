@@ -1,8 +1,3 @@
-
--- USER is a reserved keyword with Postgres
--- You must use double quotes in every query that user is in:
--- ex. SELECT * FROM "user";
--- Otherwise you will have errors!
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
     "username" VARCHAR (80) UNIQUE NOT NULL,
@@ -27,11 +22,13 @@ CREATE TABLE "feedback" (
 	"user_id" INTEGER REFERENCES "user"
 );
 
+
+-- sample data after creating first user
 INSERT INTO coffee (name, roast_date, user_id)
 VALUES
 ('Spyhouse, Women Coffee Produceers', '8/1/20', 1),
 ('Dogwood, Bearhug', '7/30/20',1),
 ('Dogwood, Neon','7/21/20',1),
 ('Intelligentsia, Costa Rica Las Nubes','8/1/20',1)
-('Intelligentsia, Black Cat', '7/6/20',2),
-('Spyhouse, Otilio Leiva', '7/15/20',2);
+('Intelligentsia, Black Cat', '7/6/20',1),
+('Spyhouse, Otilio Leiva', '7/15/20',1);

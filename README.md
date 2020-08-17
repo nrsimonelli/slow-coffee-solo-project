@@ -1,7 +1,6 @@
 # Slow Coffee 
 
-### By Nicholas Simonelli 
-![github](https://github.com/nrsimonelli)
+### By Nicholas Simonelli / ![nrsimonelli](https://github.com/nrsimonelli)
 
 *Duration: Two Week Sprint*
 
