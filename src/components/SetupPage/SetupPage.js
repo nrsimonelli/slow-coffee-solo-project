@@ -304,11 +304,13 @@ class SetupPage extends Component {
           </div>
          )}
         {activeStep === 0 && this.state.addButton === false && (
-            <i
-            className='material-icons md-48 padding'
+            <Button
+            variant='contained'
+            id='new-coffee-button'
+            color='primary'
             onClick={()=>this.changeAddButton(true)}>
-            add
-          </i>
+            New Coffee?
+          </Button>
           )}
           </div>
         </form>

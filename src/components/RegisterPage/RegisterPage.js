@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import Input from '@material-ui/core/Input';
+import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 
 class RegisterPage extends Component {
@@ -51,6 +53,9 @@ class RegisterPage extends Component {
         )}
         <div>
           <p>Register User</p>
+          <Link className='home-light' to='/home'>
+              <i className='material-icons md-36 light'>home</i>
+            </Link>
           <div>
             <label htmlFor="username">
               Username:
@@ -77,19 +82,22 @@ class RegisterPage extends Component {
           </div>
         </div>
           <span>
-            <button
+            <Button
               className="link-button"
+              variant='contained'
+              color='secondary'
               type="submit"
               name="submit"
               value='Register'
               onClick={this.registerUser}
             >
               Register
-              </button>
-              <span> | </span>
+              </Button>
+              <span className='pipe'> | </span>
             <button
               type="button"
               className="link-button"
+              id='register-button'
               onClick={() => {this.props.history.push('/login')}}
             >
             Login

@@ -54,6 +54,20 @@ input {
     outline:0;
     cursor: pointer;
 }
+#register-button{
+    font-style: italic;
+    font-size: 36px;
+    padding-bottom: 10px;
+    
+}
+.login-button{
+    font-size: 40px;
+}
+.pipe{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
 .contentRootVertical{
     margin: 0;
     padding: 0;
@@ -480,9 +494,17 @@ input {
     width: 100%;
 
 }
+#new-coffee-button{
+    margin-top: 20px;
+    margin-left: 20px;
+    font-style: italic;
+}
 
 .nav-link:hover {
   opacity: .5;
+}
+.nav-link.login{
+    font-size: 20px;
 }
 
 .nav-right {
@@ -516,6 +538,16 @@ i:hover{
 }
 .material-icons.md-24{
     font-size: 24px;
+}
+.material-icons.light{
+    color: var(--text);
+}
+.home-light{
+    position: absolute;
+    top: 0;
+    right:0;
+    padding-right: 40px;
+    padding-top: 20px;
 }
 .material-icons.md-48{
     font-size: 48px;

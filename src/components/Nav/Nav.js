@@ -15,8 +15,8 @@ const Nav = (props) => (
           <i className='material-icons md-24'>power_settings_new</i>
           </div>
         :
-        <Link className='nav-link' to='/login'>
-          <i className='material-icons md-24'>login</i>
+        <Link className='nav-link login' to='/login'>
+          Log In
         </Link>}
       
       {props.user.id && (
@@ -34,6 +34,7 @@ const Nav = (props) => (
     </div>
   </div>
 );
+
 
 const mapStateToProps = state => ({
   user: state.user,
